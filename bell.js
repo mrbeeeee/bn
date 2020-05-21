@@ -561,7 +561,7 @@ function getsch() {
                 var timel = "14:45:00";
                 classis = true;
             } else if (timex >= 14.45 && timex <= 24.59) {
-                period = "Have a great rest of your day!"
+                period = "IT'S OVER!!!! HAVE A GREAT SUMMER! :-D"
                 var timel = "24:00:00";
                 classis = false;
             } else {
