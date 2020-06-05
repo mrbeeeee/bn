@@ -4,7 +4,8 @@ var d = new Date();
 var n = d.getDay()
 //var n = 69; (Bulldog breakout schedule)
 //var n = 70; // (Fri Assembly A)
-var n = 71; // (Coronavirus Remote Teaching Schedule)
+//var n = 71; // (Coronavirus Remote Teaching Schedule)
+var n = 42; // (Summer school schedule)
 getsch();
 
 
@@ -571,7 +572,69 @@ function getsch() {
             }
         };
 
-
+        ///// Summer School Schedule
+        if (n == 42) {
+            dayweek = "Summer School Schedule"
+            //var timex = new Date().getHours();
+            if (timex >= 1.00 && timex < 8.00) {
+                period = "Good Morning! School Starts in..."
+                var timel = "8:00:00";
+                classis = false;
+            } else if (timex >= 8.00 && timex < 8.45) {
+                period = "Instruction Session 1/5"
+                bmessage = "Period 1 -  8:00 to 8:45"
+                var timel = "8:45:00";
+                classis = true;
+            } else if (timex >= 8.45 && timex < 8.55) {
+                period = "Take 10. We're back at 8:55"
+                bmessage = "P1 to P2 Intermission -  8:40 to 8:55"
+                var timel = "8:55:00";
+                classis = false;
+            } else if (timex >= 8.55 && timex < 9.40) {
+                bmessage = "Period 2 -  8:55 to 9:40"
+                period = "Instruction Session 2/5"
+                var timel = "9:40:00";
+                classis = true;
+            } else if (timex >= 9.40 && timex < 10.00) {
+                bmessage = "Break Time - 9:40 to 10:00"
+                period = "Break Time (20 Minutes)"
+                var timel = "10:00:00";
+                classis = false;
+            } else if (timex >= 10.00 && timex < 10.45) {
+                bmessage = "Period 3 - 10:00 to 10:45"
+                period = "Instruction Session 3/5"
+                var timel = "10:45:00";
+                classis = true;
+            } else if (timex >= 10.45 && timex < 10.55) {
+                period = "Take 10. We're back at 10:55"
+                bmessage = "P3 to P4 Intermission -  10:45 to 10:55"
+                var timel = "10:55:00";
+                classis = false;
+            } else if (timex >= 10.55 && timex < 11.40) {
+                bmessage = "Period 4 - 10:55 to 11:40"
+                period = "Instruction Session 4/5"
+                var timel = "11:40:00";
+                classis = true;
+            } else if (timex >= 11.40 && timex < 12.15) {
+                period = "Lunch Break: We're back at 12:15"
+                bmessage = "Lunch Break (11:40 12:15 PM)"
+                var timel = "12:15:00";
+                classis = false;
+            } else if (timex >= 12.15 && timex < 13.00) {
+                bmessage = "Period 5 - 12:15 to 1:00"
+                period = "Instruction Session 5/5"
+                var timel = "13:00:00";
+                classis = false;
+            } else if (timex >= 14.45 && timex <= 24.59) {
+                period = "Have a great rest of your day!"
+                var timel = "24:00:00";
+                classis = false;
+            } else {
+                period = "Intermission"
+                var timel = "1:00:00";
+                classis = false;
+            }
+        };
 
 
     document.getElementById("demo").innerHTML = period;
