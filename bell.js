@@ -625,7 +625,7 @@ function getsch() {
                 period = "Instruction Session 5/5"
                 var timel = "13:00:00";
                 classis = false;
-            } else if (timex >= 14.45 && timex <= 24.59) {
+            } else if (timex >= 13.00 && timex <= 24.59) {
                 period = "Have a great rest of your day!"
                 var timel = "24:00:00";
                 classis = false;
