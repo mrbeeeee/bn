@@ -587,7 +587,7 @@ function getsch() {
                 classis = true;
             } else if (timex >= 8.45 && timex < 8.55) {
                 period = "Take 10. We're back at 8:55"
-                bmessage = "P1 to P2 Intermission -  8:40 to 8:55"
+                bmessage = "P1 to P2 Intermission -  8:45 to 8:55"
                 var timel = "8:55:00";
                 classis = false;
             } else if (timex >= 8.55 && timex < 9.40) {
