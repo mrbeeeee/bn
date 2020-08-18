@@ -237,7 +237,7 @@ function initializeClock(id, endtime) {
 
 // Last number is mili seconds
 deadline = new Date(Date.parse(new Date()) + 1 * 1 * 1 * xsec * 1000);
-initializeClock('clockdiv', deadline);
+initializeClock('clockdiv1', deadline);
 
 function checknull() {
     if (distance == 0) {
