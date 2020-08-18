@@ -211,10 +211,10 @@ function getTimeRemaining(endtime) {
 
 function initializeClock(id, endtime) {
     var clock = document.getElementById(id);
-    var daysSpan = clock.querySelector('.days');
-    var hoursSpan = clock.querySelector('.hours');
-    var minutesSpan = clock.querySelector('.minutes');
-    var secondsSpan = clock.querySelector('.seconds');
+    var daysSpan = clock.querySelector('.daysA');
+    var hoursSpan = clock.querySelector('.hoursA');
+    var minutesSpan = clock.querySelector('.minutesA');
+    var secondsSpan = clock.querySelector('.secondsA');
 
     function updateClock() {
         var t = getTimeRemaining(endtime);
