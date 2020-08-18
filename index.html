@@ -660,6 +660,55 @@
       }
 
       */
+
+
+
+
+
+
+
+
+
+.panicstudy {
+  position: absolute;
+  align-items: center;
+  height: 250px; 
+  width: auto;
+}
+
+
+.slide-in-br {
+	-webkit-animation: slide-in-br 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both;
+	        animation: slide-in-br 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s both;
+}
+
+
+ @-webkit-keyframes slide-in-br {
+  0% {
+    -webkit-transform: translateY(1000px) translateX(1000px);
+            transform: translateY(1000px) translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) translateX(0);
+            transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-br {
+  0% {
+    -webkit-transform: translateY(1000px) translateX(1000px);
+            transform: translateY(1000px) translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) translateX(0);
+            transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+}
+
+
     </style>
 </head>
 
@@ -922,7 +971,8 @@
         </div>
     </div>
 </div><!-- /container -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <script src="js/boxlayout.js"></script> <script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <script src="js/boxlayout.js"></script> 
+<script>
             $(function() {
                 Boxlayout.init();
             });
@@ -930,7 +980,15 @@
 
 
 
-<div class="round-button bottomright" style="size: 50%"><div class="round-button-circle"><a href="http://example.com" class="round-button">Button!!</a></div></div>
+
+
+  
+    <a href='https://panicstudy.com' target='_blank'><img src='https://cmdbook.com/assets/ps-img/front-page-logo.png' class='panicstudy bottomright slide-in-br'></img></a>
+      
+
+    
+    
+
 
 
 
