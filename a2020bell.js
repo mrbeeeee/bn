@@ -34,7 +34,7 @@ function getsch() {
             dayweek = "Coronavirus - Remote Teaching Schedule"
             //var timex = new Date().getHours();
             if (timex >= 1.00 && timex < 8.00) {
-                period = "Good Morning! School Starts in..."
+                period = "Early Bird"
                 var timel = "8:00:00";
                 classis = false;
             } else if (timex >= 8.00 && timex < 8.40) {
@@ -113,7 +113,7 @@ function getsch() {
                 var timel = "14:45:00";
                 classis = true;
             } else if (timex >= 14.45 && timex <= 24.59) {
-                period = "IT'S OVER!!!! HAVE A GREAT SUMMER! :-D"
+                period = "School Day Ended"
                 var timel = "24:00:00";
                 classis = false;
             } else {
