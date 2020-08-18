@@ -272,6 +272,9 @@ setTimeout(() => {
 
   console.log(`seconds elapsed = ${Math.floor(millis/1000)}, playing bell`);
   playAudio();
+  window.location.reload();
+  getsch();
+  Program.restart();
 }, timeoutx);
 
 if (accepted()) {
