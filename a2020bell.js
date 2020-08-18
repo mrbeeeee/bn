@@ -280,32 +280,5 @@ if (accepted()) {
 
 }
 
-//break alarm 2
 
-/* if (!isclass) {
-var x = document.getElementById("bell"); 
-
-function playAudio() { 
-  x.play(); 
-} 
-
-function pauseAudio() { 
-  x.pause(); 
-} 
-
-timeoutx = finalseconds * 1000;
-
-const start = Date.now();
-
-console.log('Starting 2nd alternate bell countdown for audio');
-
-setTimeout(() => {
-  const millis = Date.now() - start;
-
-  console.log(`seconds elapsed = ${Math.floor(millis/1000)}, playing bell`);
-  playAudio();
-}, timeoutx);
-}
-
-*/
 
