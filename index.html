@@ -1,1410 +1,853 @@
 <!DOCTYPE html>
-<html>
-  <meta http-equiv="refresh" content="30">
-  <!--?php //$_SESSION["specusername"] = $_SESSION["username"];?-->
-  <head>
-    <script>
-      setInterval(function() {
-    window.location.reload();
-}, 300000);
-
-      //document.cookie = "landingPage=visited; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-      //if(!document.cookie.includes('landingPage=visited;')) {
-      //  window.location.href = "https://bell.ninja/firsttime.php";
-      //}
-
-      function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
-</script>
-<header>
-<style>
-  .containerforalerts {
-  opacity: 0.8;
-  align-items: flex-start;
-  z-index: 5;
-  transition: 0.3s;
-}
-
-.alertf {
-  opacity: 0.8;
-  width: 50%;
-  border-radius: 15px;
-  margin-left: 1380px;
-  padding: 20px;
-  background-color: #f44336;
-  color: white;
-  opacity: 1;
-  transition: opacity 0.6s;
-  margin-bottom: 15px;
-  position: -webkit-sticky;
-  position: absolute;
-  bottom: 1rem;
-  align-self: flex-end;
-  margin-top: 300px;
-  position: fixed;
-     bottom: 0px;
-     right: 0px;
-     transition: 0.3s;
-}
-
-.alertf.success {background-color: #4CAF50; opacity: 0.8;}
-.alertf.info {background-color: #2196F3; opacity: 0.8;}
-.alertf.warning {background-color: #ff9800; opacity: 0.8;}
-
-.closebtnf {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.closebtnf:hover {
-  color: black;
-}
-
-.stickit {
-
-  position: relative;
-  bottom: 1px;
-  width: 120%;
-  
-}
-
-.stickitleft {
-
-position: relative;
-bottom: -1px;
-margin-left: -600px;
-width: 25%;
-
-}
-</style>
-    <div class="header-area ">
-      <div id="sticky-header" class="main-header-area">
-        <div class="container-fluid">
-          <div class="row align-items-center">
-            <div class="col-xl-3 col-lg-2">
-              <div class="logo">
-                <a href="https://riviera.tools">
-                  <h1 style="font-size:30px; color: darkblue;">Riviera Bell Ninja
-                  </h1>
-                  <canvas id="canvas" width="20" height="20" style="opacity: 0.5; position:relative; left:155px; top:-45px;">
-                  </canvas>
-                  <script>
-                    var canvas = document.getElementById("canvas");
-                    var ctx = canvas.getContext("2d");
-                    var radius = canvas.height / 2;
-                    ctx.translate(radius, radius);
-                    radius = radius * 0.90
-                    setInterval(drawClock, 1000);
-                    function drawClock() {
-                      drawFace(ctx, radius);
-                      drawNumbers(ctx, radius);
-                      drawTime(ctx, radius);
-                    }
-                    function drawFace(ctx, radius) {
-                      var grad;
-                      ctx.beginPath();
-                      ctx.arc(0, 0, radius, 0, 2*Math.PI);
-                      ctx.fillStyle = 'white';
-                      ctx.fill();
-                      grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
-                      grad.addColorStop(0, '#333');
-                      grad.addColorStop(0.5, 'white');
-                      grad.addColorStop(1, '#333');
-                      ctx.strokeStyle = grad;
-                      ctx.lineWidth = radius*0.1;
-                      ctx.stroke();
-                      ctx.beginPath();
-                      ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
-                      ctx.fillStyle = '#333';
-                      ctx.fill();
-                    }
-                    function drawNumbers(ctx, radius) {
-                      var ang;
-                      var num;
-                      ctx.font = radius*0.15 + "px arial";
-                      ctx.textBaseline="middle";
-                      ctx.textAlign="center";
-                      for(num = 1; num < 13; num++){
-                        ang = num * Math.PI / 6;
-                        ctx.rotate(ang);
-                        ctx.translate(0, -radius*0.85);
-                        ctx.rotate(-ang);
-                        ctx.fillText(num.toString(), 0, 0);
-                        ctx.rotate(ang);
-                        ctx.translate(0, radius*0.85);
-                        ctx.rotate(-ang);
-                      }
-                    }
-                    function drawTime(ctx, radius){
-                      var now = new Date();
-                      var hour = now.getHours();
-                      var minute = now.getMinutes();
-                      var second = now.getSeconds();
-                      //hour
-                      hour=hour%12;
-                      hour=(hour*Math.PI/6)+
-                        (minute*Math.PI/(6*60))+
-                        (second*Math.PI/(360*60));
-                      drawHand(ctx, hour, radius*0.5, radius*0.07);
-                      //minute
-                      minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
-                      drawHand(ctx, minute, radius*0.8, radius*0.07);
-                      // second
-                      second=(second*Math.PI/30);
-                      drawHand(ctx, second, radius*0.9, radius*0.02);
-                    }
-                    function drawHand(ctx, pos, length, width) {
-                      ctx.beginPath();
-                      ctx.lineWidth = width;
-                      ctx.lineCap = "round";
-                      ctx.moveTo(0,0);
-                      ctx.rotate(pos);
-                      ctx.lineTo(0, -length);
-                      ctx.stroke();
-                      ctx.rotate(-pos);
-                    }
-                  </script>
-                </a>
-              </div>
-            </div>
-            <div class="col-xl-6 col-lg-7">
-              <div class="main-menu  d-none d-lg-block">
-                <nav>
-                  <ul id="navigation">
-                    <li>
-                      <a style="visibility: hidden;"> . .
-                      </a>
-                      <a class="active" href="https://bell.ninja">Main 
-                      </a>
-                      <a style="visibility: hidden;"> . .
-                      </a>
-                    </li>
-                    <li>
-                      <a style="visibility: hidden;"> . .
-                      </a>
-                      <a class="active" href="https://bell.ninja/lunch">Lunch 
-                      </a>
-                      <a style="visibility: hidden;"> . .
-                      </a>
-                    </li>
-                    <li>
-                      <a style="visibility: hidden;"> . .
-                      </a>
-                      <a class="active" href="https://bell.ninja/arcade">Arcade
-                      </a>
-                      <a style="visibility: hidden;"> . .
-                      </a>
-                    </li>
-                    </li>
-                    </ul>
-                  </li>
-                  </ul>
-                </nav>
-            </div>
-          </div>
-
-
-          <!--?php if($_SESSION["loggedin"] == true) { ?>
-          
-          <div class="col-xl-3 col-lg-3 d-none d-lg-block" style="position: relative; left: -100px;">
-            <div class="Appointment">
-              <div class="book_btn d-none d-lg-block">
-                <div class="dropdown">
-                  <span>
-                    <p style="color: white; font-size: 15px;">Hi, 
-                      <?php echo htmlspecialchars($_SESSION["firstname"]); ?>! 
-                      <i class="ti-angle-down">
-                      </i>
-                    </p>
-                  </span>
-                  <div class="dropdown-content">
-                    <p>
-                      Signed In
-                      <br>
-                      <a href="https://bell.ninja/settings">Settings
-                      </a>
-                    <hr>
-                    <a href="logout.php" style="background-color: lightred;">Logout
-                    </a>
-                    <hr>
-                    Status: 
-                    <?php echo htmlspecialchars($_SESSION["status"]); ?>
-                    <br>
-                    User ID: 
-                    <?php echo htmlspecialchars($_SESSION["id"]); ?>
-                    <br>
-                    <br>
-                    <img src='https://cmdbook.com/assets/img/coin.png' style='width: 25px; height 25px;'></img><?php echo htmlspecialchars($_SESSION["coins"]); ?> 
-                    <br>
-                    <hr>
-                    </p>
-                </div>
-              </div>
-              <?php } else { ?>
-              <div class="col-xl-3 col-lg-3 d-none d-lg-block" style="position: relative; left: -60px;">
-                <div class="Appointment">
-                  <div class="book_btn d-none d-lg-block">
-                    <button onclick="window.location.href = 'https://bell.ninja/register';" style="width:auto; height: 3rem; border-radius: 5px; top: 100px;">Sign Up
-                    </button>
-                    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto; height: 3rem; border-radius: 5px; top: 100px;">Login>
-                    <button onclick="window.location.href = 'https://bell.ninja/login';" style="width:auto; height: 3rem; border-radius: 5px; top: 100px;">Login
-                    
-                    </button>
-                    <script>
-                      // Get the modal
-                      var modal = document.getElementById('id01');
-                      // When the user clicks anywhere outside of the modal, close it
-                      window.onclick = function(event) {
-                        if (event.target == modal) {
-                          modal.style.display = "none";
-                        }
-                      }
-                    </script>
-                    <a class="login-trigger" href="#" data-target="#login" data-toggle="modal">Login</a>
-                  </div>
-                </div>
-              </div-->
-              <div class="col-12">
-                <div class="mobile_menu d-block d-lg-none">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--a  href="log-in.php">Login</a-->
-    <!--a class="login-trigger" href="#" data-target="#login" data-toggle="modal">Login</a-->
-    </div>
-  </div>
-</div-->
-<div class="col-12">
-  <div class="mobile_menu d-block d-lg-none">
-  </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</header>
-<!-- header-end -->
-
-<body>
-  <div id="id01" class="modal">
-    <form class="modal-content animate" action="/login.php" method="post" style='z-index: -1;'>
-      <div class="imgcontainer">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;
-        </span>
-        <img src="img/img_avatar2.jpg" style="width:350px;height:400px;" alt="Avatar" class="avatar">
-      </div>
-      <hr>
-      <div class="container">
-        <label for="myusername">
-          <b>Username/Email
-          </b>
-        </label>
-        <input type="text" placeholder="Enter Username/Email" name="username" required>
-        <label for="mypassword">
-          <b>Password
-          </b>
-        </label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-        <button type="submit">Login
-        </button>
-        <!--label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label-->
-      </div>
-      <div class="container" style="background-color:#f1f1f1" class='stickit'>
-        <button style="position:relative; left: 10px;" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn stickitleft">Cancel
-        </button>
-        <span class="psw" style="position:relative; left:-10px;">
-          <a href="register.php" class='stickit'>Create Account
-          </a>
-        </span> 
-        <span class="psw" style="position:relative; left: -30px;">
-          <a href="passreset.php" class="stickit">Forgot password?
-          </a>
-        </span>
-      </div>
-    </form>
-  </div>
-</script>
-    <meta charset="utf-8">
-    <meta name="propeller" content="0e936dc8a1f7f38682a37085c1dd8dcc">
-    <script data-ad-client="ca-pub-9017404753831118" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
-    window._mNHandle = window._mNHandle || {};
-    window._mNHandle.queue = window._mNHandle.queue || [];
-    medianet_versionId = "3121199";
-</script>
+<head>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Bell Ninja - A CMD Book Creation
     </title>
     <meta name="description" content="A simple answer to a constant question. When is the class bell going to ring?">
-    <!--This may be the devices problem!-->
-<meta name="viewport" content="width=device-width, initial-scale=1"-->
-    <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <!-- CSS here -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/nice-select.css">
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/gijgo.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/slick.css">
-    <link rel="stylesheet" href="css/slicknav.css">
-    <link rel="stylesheet" href="css/style.css">
-    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
-    <link rel="icon" href="img/favicon.png" type="img/png">
-    <link rel="apple-touch-icon" sizes="57x57" href="img/favicons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="img/favicons/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/favicons/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="img/favicons/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/favicons/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="img/favicons/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="img/favicons/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="img/favicons/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="img/favicons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="img/favicons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158778430-1">
-    </script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'UA-158778430-1');
-    </script>
-    <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
     <style>
-      .snote{
-        max-width:150%;
-        max-height:150%;
-      }
-      .snote h2,p{
-        font-size:80%;
-        font-weight:normal;
-      }
-      .snote ul,li{
-        list-style:none;
-      }
-      .snote ul{
-        overflow:hidden;
-        padding:3em;
-      }
-      .snote ul li a{
-        text-decoration:none;
-        color:#000;
-        background:#ffc;
-        display:block;
-        height:15em;
-        width:12em;
-        padding:1em;
-        -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
-        -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-        box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-        -webkit-transform:rotate(-6deg);
-        -o-transform:rotate(-6deg);
-        -moz-transform:rotate(-6deg);
-        -moz-transition:-moz-transform .15s linear;
-        -o-transition:-o-transform .15s linear;
-        -webkit-transition:-webkit-transform .15s linear;
-      }
-      .snote ul li:nth-child(even) a{
-        -o-transform:rotate(4deg);
-        -webkit-transform:rotate(4deg);
-        -moz-transform:rotate(4deg);
-        position:relative;
-        top:5px;
-        background:#cfc;
-      }
-      .snote ul li:nth-child(3n) a{
-        -o-transform:rotate(-3deg);
-        -webkit-transform:rotate(-3deg);
-        -moz-transform:rotate(-3deg);
-        position:relative;
-        top:-5px;
-        background:#ccf;
-      }
-      .snote ul li:nth-child(5n) a{
-        -o-transform:rotate(5deg);
-        -webkit-transform:rotate(5deg);
-        -moz-transform:rotate(5deg);
-        position:relative;
-        top:-10px;
-        background:#fcf;
-      }
-      .snote ul li a:hover,ul li a:focus{
-        -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
-        -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
-        box-shadow:10px 10px 7px rgba(0,0,0,.7);
-        -webkit-transform: scale(1.25);
-        -moz-transform: scale(1.25);
-        -o-transform: scale(1.25);
-        position:relative;
-        z-index:5;
-      }
-      .snote ul li{
-        margin:1em;
-        float:left;
-      }
-      .snote ul li h2{
-        font-size:140%;
-        font-weight:bold;
-        padding-bottom:0px;
-        font-family:Oswald;
-        text-align:center;
-        color:#000;
-      }
-      .snote ul li p{
-        font-family:'Shadows Into Light Two',arial,sans-serif;
-        font-size:120%;
-        color:#000;
-      }
-      html {
-        overflow: scroll;
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-      }
-      ::-webkit-scrollbar {
-        width: 0px;
-        /* Remove scrollbar space */
-        background: transparent;
-        /* Optional: just make scrollbar invisible */
-      }
-      /* Optional: show position indicator in red */
-      ::-webkit-scrollbar-thumb {
-        background: #FF0000;
-      }
-      /* Full-width input fields */
-      input[type=text], input[type=password] {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-      }
-      /* Set a style for all buttons */
-      button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        width: 100%;
-      }
-      button:hover {
-        opacity: 0.8;
-      }
-      /* Extra styles for the cancel button */
-      .cancelbtn {
-        width: auto;
-        padding: 10px 18px;
-        background-color: #f44336;
-      }
-      /* Center the image and position the close button */
-      .imgcontainer {
-        text-align: center;
-        margin: 24px 0 12px 0;
-        position: relative;
-      }
-      img.avatar {
-        width: 40%;
-        border-radius: 50%;
-      }
-      .container {
-        padding: 16px;
-      }
-      span.psw {
-        float: right;
-        padding-top: 16px;
-      }
-      /* The Modal (background) */
-      .modal {
-        display: none;
-        /* Hidden by default */
-        position: fixed;
-        /* Stay in place */
-        z-index: 1;
-        /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%;
-        /* Full width */
-        height: 100%;
-        /* Full height */
-        overflow: auto;
-        /* Enable scroll if needed */
-        background-color: rgb(0,0,0);
-        /* Fallback color */
-        background-color: rgba(0,0,0,0.4);
-        /* Black w/ opacity */
-        padding-top: 60px;
-      }
-      /* Modal Content/Box */
-      .modal-content {
-        background-color: #fefefe;
-        margin: 5% auto 15% auto;
-        /* 5% from the top, 15% from the bottom and centered */
-        width: 80%;
-        /* Could be more or less, depending on screen size */
-        border-radius: 8px;
-      }
-      /* The Close Button (x) */
-      .close {
-        position: absolute;
-        right: 25px;
-        top: 0;
-        color: #000;
-        font-size: 35px;
-        font-weight: bold;
-      }
-      .close:hover,
-      .close:focus {
-        color: red;
-        cursor: pointer;
-      }
-      /* Add Zoom Animation */
-      .animate {
-        -webkit-animation: animatezoom 0.6s;
-        animation: animatezoom 0.6s
-      }
-      @-webkit-keyframes animatezoom {
-        from {
-          -webkit-transform: scale(0)}
-        to {
-          -webkit-transform: scale(1)}
-      }
-      @keyframes animatezoom {
-        from {
-          transform: scale(0)}
-        to {
-          transform: scale(1)}
-      }
-      /* Change styles for span and cancel button on extra small screens */
-      @media screen and (max-width: 300px) {
-        span.psw {
-          display: block;
-          float: none;
-        }
-        .cancelbtn {
-          width: 100%;
-        }
-      }
-      body {
-        text-align: center;
-        background: #00ECB9;
-        font-family: sans-serif;
-        font-weight: 100;
-      }
-      h1 {
-        color: #396;
-        font-weight: 100;
-        font-size: 40px;
-        margin: 40px 0px 20px;
-      }
-      #clockdiv {
-        font-family: sans-serif;
-        color: #fff;
-        display: inline-block;
-        font-weight: 100;
-        text-align: center;
-        font-size: 30px;
-      }
-      #clockdiv>div {
-        padding: 10px;
-        border-radius: 3px;
-        background: #00BF96;
-        display: inline-block;
-      }
-      #clockdiv div>span {
-        padding: 15px;
-        border-radius: 3px;
-        background: #00816A;
-        display: inline-block;
-      }
-      .smalltext {
-        padding-top: 5px;
-        font-size: 16px;
-      }
-      #share-buttons img {
-        width: 35px;
-        padding: 5px;
-        border: 0;
-        box-shadow: 0;
-        display: block;
-      }
-      .dropbtn {
-        background-color: #A9A9A9;
-        color: white;
-        padding: 9px;
-        font-size: 14px;
-        border: none;
-        cursor: pointer;
-      }
-      .dropdown {
-        position: relative;
-        display: inline-block;
-      }
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-      }
-      .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-      }
-      .dropdown-content a:hover {
-        background-color: #f1f1f1}
-      .dropdown:hover .dropdown-content {
-        display: block;
-      }
-      .dropdown:hover .dropbtn {
-        background-color: #808080;
-      }
-      .fade-in {
-        animation: fadeIn ease 4s;
-        -webkit-animation: fadeIn ease 4s;
-        -moz-animation: fadeIn ease 4s;
-        -o-animation: fadeIn ease 4s;
-        -ms-animation: fadeIn ease 4s;
-      }
-      @keyframes fadeIn {
-        0% {
-          opacity:0;
-        }
-        100% {
-          opacity:1;
-        }
-      }
-      @-moz-keyframes fadeIn {
-        0% {
-          opacity:0;
-        }
-        100% {
-          opacity:1;
-        }
-      }
-      @-webkit-keyframes fadeIn {
-        0% {
-          opacity:0;
-        }
-        100% {
-          opacity:1;
-        }
-      }
-      @-o-keyframes fadeIn {
-        0% {
-          opacity:0;
-        }
-        100% {
-          opacity:1;
-        }
-      }
-      @-ms-keyframes fadeIn {
-        0% {
-          opacity:0;
-        }
-        100% {
-          opacity:1;
-        }
-      }
-      /* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
-      .flip-box {
-        margin: auto;
-        width: 50%;
-        padding: 10px;
-        background-color: transparent;
-        width: 800px;
-        height: 150px;
-        perspective: 1000px;
-        /* Remove this if you don't want the 3D effect */
-      }
-      /* This container is needed to position the front and back side */
-      .flip-box-inner {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        transition: transform 0.8s;
-        transform-style: preserve-3d;
-      }
-      /* Do an horizontal flip when you move the mouse over the flip box container */
-      .flip-box:hover .flip-box-inner {
-        transform: rotateY(180deg);
-      }
-      /* Position the front and back side */
-      .flip-box-front, .flip-box-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        -webkit-backface-visibility: hidden;
-        /* Safari */
-        backface-visibility: hidden;
-      }
-      /* Style the front side */
-      .flip-box-front {
-        color: black;
-      }
-      /* Style the back side */
-      .flip-box-back {
-        background-color: #00BF96;
-        transform: rotateY(180deg);
-      }
-      .dropdownx {
-        position: relative;
-        display: inline-block;
-        color: white;
-      }
-      .dropdownx-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 200px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        padding: 12px 16px;
-        z-index: 5;
-      }
-      .dropdownx:hover .dropdownx-content {
-        display: block;
-      }
+        /* transitions: Codrops, src https://tympanus.net/codrops/2013/04/23/fullscreen-layout-with-page-transitions/ */
 
-      .containerforalerts {
-  align-items: flex-start;
-  z-index:5;
-}
+        @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 
-.alertf {
-  border-radius: 15px;
-  margin-left: 1380px;
-  padding: 20px;
-  background-color: #f44336;
-  color: white;
-  opacity: 1;
-  transition: opacity 0.6s;
-  margin-bottom: 15px;
-  position: -webkit-sticky;
-  position: absolute;
-  bottom: 1rem;
-  align-self: flex-end;
-  margin-top: 300px;
-  position: fixed;
-     bottom: 0px;
-     right: 0px;
-}
+        @font-face {
+            font-family: 'icomoon';
+            src:url('../fonts/icomoon.eot');
+            src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+                url('../fonts/icomoon.woff') format('woff'),
+                url('../fonts/icomoon.ttf') format('truetype'),
+                url('../fonts/icomoon.svg#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-.alertf.success {background-color: #4CAF50;}
-.alertf.info {background-color: #2196F3;}
-.alertf.warning {background-color: #ff9800;}
+        body, html { font-size: 100%; padding: 0; margin: 0; height: 100%;}
 
-.closebtnf {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
+        *,
+        *:after,
+        *:before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
 
-.closebtnf:hover {
-  color: black;
-}
+        body {
+            font-family: 'Lato', Calibri, Arial, sans-serif;
+            color: #f2ede3;
+            background: #333;
+            font-size: 0.9em;
+            font-weight: 300;
+        }
+
+        a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding: 0 5px;
+            text-transform: uppercase;
+            font-size: 80%;
+        }
+
+        a:hover {
+            color: #fff;
+        }
+
+        .container { height: 100%; width: 100%;}
+
+        .bl-main {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .bl-main > section {
+            position: absolute;
+            width: 20%;
+            height: 100%;
+        }
+
+        .bl-main > section:first-child {
+            top: 0;
+            left: 0;
+            background: #F06060;
+        }
+
+        .bl-main > section:nth-child(2) {
+            top: 0;
+            left: 20%;
+            background: #FA987D;
+        }
+
+        .bl-main > section:nth-child(3) {
+            top: 0;
+            left: 40%;
+            background: #72CCA7;
+        }
+
+        .bl-main > section:nth-child(4) {
+            top: 0%;
+            left: 60%;
+            background: #10A296;
+        }
+
+        .bl-main > section:nth-child(5) {
+            top: 0%;
+            left: 80%;
+            background: #FA987D;
+        }
+
+        .bl-main > section:nth-child(6) {
+            top: 0%;
+            left: 100%;
+            background: #10A296;
+        }
+
+        .bl-main > section:nth-child(7) {
+            top: 0%;
+            left: 120%;
+            background: #10A296;
+        }
+
+
+        .bl-box {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            opacity: 1;
+            /* Centering with flexbox */
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-pack: center;
+            -moz-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -moz-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .bl-box h2 {
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            width: 100%;
+            font-size: 1.8em;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .bl-icon {
+            font-family: 'icomoon';
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            cursor: pointer;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .bl-icon:before {
+            display: block;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .bl-icon-about:before {
+            content: "\e000";
+        }
+
+        .bl-icon-works:before {
+            content: "\e001";
+        }
+
+        .bl-icon-blog:before {
+            content: "\e002";
+        }
+
+        .bl-icon-contact:before {
+            content: "\e003";
+        }
+
+        .bl-main > section .bl-icon-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .bl-icon-close:before {
+            content: "\e005";
+        }
+
+        .bl-content, 
+        div.bl-panel-items > div > div {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            top: 60px;
+            left: 30px;
+            right: 30px;
+            bottom: 30px;
+            padding: 0 20px;
+            overflow: hidden;
+            overflow-y: auto;
+        }
+
+        /* Custom content */
+
+        .bl-content p {
+            margin: 0 auto;
+            padding-bottom: 15px;
+            font-size: 1.7em;
+            line-height: 1.8;
+        }
+
+        .bl-content h2 {
+            font-size: 3em;
+            font-weight: 300;
+            margin: 0 0 20px 0;
+        }
+
+        .bl-content article {
+            padding: 20px 40px 20px 0px;
+        }
+
+        .bl-content article h3 {
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0 0 10px 0;
+            padding-top: 20px;
+            font-size: 1.4em;
+        }
+
+        .bl-content article a {
+            color: rgba(0,0,0,0.2);
+        }
+
+        .bl-content > ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        } 
+
+        .bl-content > ul li {
+            display: inline-block;
+            width: 20%;
+            margin: 1%;
+        }
+
+        .bl-content > ul li a {
+            display: block;
+            padding: 0;
+            border: 8px solid rgba(0,0,0,0.1);
+        }
+
+        .bl-content > ul li a img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* Panel Items */
+
+        div.bl-panel-items,
+        div.bl-panel-items > div {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            position: absolute;
+        }
+
+        div.bl-panel-items > div > div {
+            width: 60%;
+            margin: 0 auto;
+            opacity: 1;
+            bottom: 90px;
+            top: 90px;
+            pointer-events: auto;
+        }
+
+        div.bl-panel-items > div > div h3 {
+            font-size: 2.4em;
+            font-weight: 300;
+            margin: 0 0 20px 0;
+        }
+
+        div.bl-panel-items > div > div p {
+            font-size: 1.3em;
+        }
+
+        div.bl-panel-items > div > div img {
+            float: left;
+            margin: 0 20px 20px 0;
+            max-width: 100%;
+        }
+
+        div.bl-panel-items {
+            top: 100%;
+            z-index: 9999;
+        }
+
+        div.bl-panel-items > div {
+            background: #3ba5db;
+            z-index: 0;
+            opacity: 0;
+            -webkit-transform: translateY(0);
+            -webkit-transition: -webkit-transform 0.5s ease-in-out, opacity 0s linear 0.5s;
+            -moz-transform: translateY(0);
+            -moz-transition: -moz-transform 0.5s ease-in-out, opacity 0s linear 0.5s;
+            transform: translateY(0);
+            transition: transform 0.5s ease-in-out, opacity 0s linear 0.5s;
+            -ms-transform: translateY(0);
+        }
+
+        div.bl-panel-items nav {
+            position: absolute;
+            z-index: 9999;
+            width: 216px;
+            left: 50%;
+            top: 0px;
+            margin-left: -108px;
+            opacity: 0;
+            -webkit-transition: opacity 0.2s ease-in-out 0.5s;
+            -moz-transition: opacity 0.2s ease-in-out 0.5s;
+            transition: opacity 0.2s ease-in-out 0.5s;
+        }
+
+        div.bl-panel-items.bl-panel-items-show nav span {
+            float: left;
+            margin: 5px;
+        }
+
+        div.bl-panel-items nav span.bl-next-work {
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: block;
+            text-transform: uppercase;
+            line-height: 2em;
+            cursor: pointer;
+            margin-right: 2em;
+        }
+
+        div.bl-panel-items.bl-panel-items-show nav {
+            opacity: 1;
+            top: -70px;
+        }
+
+        div.bl-panel-items > div.bl-show-work {
+            z-index: 1000;
+            opacity: 1;
+            -webkit-transform: translateY(-100%);
+            -webkit-transition: -webkit-transform 0.5s ease-in-out;
+            -moz-transform: translateY(-100%);
+            -moz-transition: -moz-transform 0.5s ease-in-out;
+            transform: translateY(-100%);
+            transition: transform 0.5s ease-in-out;
+            -ms-transform: translateY(-100%);
+        }
+
+        div.bl-panel-items > div.bl-hide-current-work {
+            opacity: 0;
+            -webkit-transition: -webkit-transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            -webkit-transform: translateY(-100%) scale(0.5);
+            -moz-transition: -moz-transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            -moz-transform: translateY(-100%) scale(0.5);
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            transform: translateY(-100%) scale(0.5);
+            -ms-transform: translateY(-100%) scale(0.5);
+            z-index: 0;
+        }
+
+        /* Transition classes and properties */
+        /* Separated for a better overview and control */
+
+        .bl-main > section {
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .bl-main > section.bl-expand {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .bl-main > section.bl-expand-top {
+            z-index: 100;
+        }
+
+        .bl-main > section:first-child.bl-expand {
+            background: #EE4444;
+        }
+        .bl-main > section:nth-child(2).bl-expand {
+            background: #F98262;
+        }
+        .bl-main > section:nth-child(3).bl-expand {
+            background: #4BBE8E;
+        }
+        .bl-main > section:nth-child(4).bl-expand {
+            background: #0D8278;
+        }
+
+        .bl-main.bl-expand-item > section:not(.bl-expand),
+        .bl-main.bl-expand-item > section.bl-scale-down {
+            -webkit-transform: scale(0.5);
+            -moz-transform: scale(0.5);
+            -ms-transform: scale(0.5);
+            transform: scale(0.5);
+            opacity: 0;
+        }
+
+        .bl-box {
+            -webkit-transition: opacity 0.2s linear 0.5s;
+            -moz-transition: opacity 0.2s linear 0.5s;
+            transition: opacity 0.2s linear 0.5s;
+        }
+
+        section.bl-expand .bl-box {
+            opacity: 0;
+            -webkit-transition: opacity 0s linear;
+            -moz-transition: opacity 0s linear;
+            transition: opacity 0s linear;
+        }
+
+        .bl-box h2 {
+            -webkit-transition: all 0.2s ease-in-out;
+            -moz-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .no-touch section:not(.bl-expand) .bl-box:hover h2 {
+            -webkit-transform: translateY(-15px);
+            -moz-transform: translateY(-15px);
+            -ms-transform: translateY(-15px);
+            transform: translateY(-15px);
+        }
+
+        .bl-content,
+        .bl-icon-close {
+            -webkit-transition: opacity 0.1s linear 0s;
+            -moz-transition: opacity 0.1s linear 0s;
+            transition: opacity 0.1s linear 0s;
+        }
+
+        section.bl-expand .bl-content,
+        section.bl-expand .bl-icon-close {
+            pointer-events: auto;
+            opacity: 1;
+            -webkit-transition: opacity 0.3s linear 0.5s;
+            -moz-transition: opacity 0.3s linear 0.5s;
+            transition: opacity 0.3s linear 0.5s;
+        }
+
+        @media screen and (max-width: 46.5em) {
+            .bl-content,
+            .bl-box {
+                font-size: 75%;
+            }
+
+            .bl-expand .bl-box {
+                height: 130px;
+            }
+
+            .bl-content > ul li {
+                width: 40%;
+            }
+        }
     </style>
-    <meta http-equiv="refresh" content="30">
-  </head>
-
-  <?php include('header.php'); ?>
+</head>
 
 
+<body></body>
+
+<div class="container">
+    <div class="conta">
+        <div class="bl-main" id="bl-main">
+            <section>
+                <div class="bl-box">
+                    <h2>Schedule A</h2>
+                </div>
+
+                <div class="bl-content">
+                    <h2>Get in touch</h2>
+
+                    <p>Pinterest semiotics single-origin coffee craft beer
+                    thundercats irony, tumblr bushwick intelligentsia pickled.
+                    Narwhal mustache godard master cleanse street art, occupy
+                    ugh selfies put a bird on it cray salvia four loko
+                    gluten-free shoreditch. Occupy american apparel freegan
+                    cliche. Mustache trust fund 8-bit jean shorts mumblecore
+                    thundercats. Pour-over small batch forage cray, banjo
+                    post-ironic flannel keffiyeh cred ethnic semiotics next
+                    level tousled fashion axe. Sustainable cardigan keytar fap
+                    bushwick bespoke.</p>
+                </div><span class="bl-icon bl-icon-close">Close</span>
+            </section>
+
+            <section>
+                <div class="bl-box">
+                    <h2>Contact</h2>
+                </div>
+
+                <div class="bl-content">
+                    <h2>Get in touch</h2>
+
+                    <p>Pinterest semiotics single-origin coffee craft beer
+                    thundercats irony, tumblr bushwick intelligentsia pickled.
+                    Narwhal mustache godard master cleanse street art, occupy
+                    ugh selfies put a bird on it cray salvia four loko
+                    gluten-free shoreditch. Occupy american apparel freegan
+                    cliche. Mustache trust fund 8-bit jean shorts mumblecore
+                    thundercats. Pour-over small batch forage cray, banjo
+                    post-ironic flannel keffiyeh cred ethnic semiotics next
+                    level tousled fashion axe. Sustainable cardigan keytar fap
+                    bushwick bespoke.</p>
+                </div><span class="bl-icon bl-icon-close">Close</span>
+            </section>
+
+            <section>
+                <div class="bl-box">
+                    <h2>About</h2>
+                </div>
+
+                <div class="bl-content">
+                    <h2>About this layout</h2>
+
+                    <p>This responsive layout is based on an initial grid of
+                    four boxes. Once a box is clicked, it gets resized to
+                    fullscreen and the other boxes scale down and fade out. In
+                    the work section we experiment with another transition
+                    which is to show a panel by making it appear from the
+                    bottom while scaling the current one down. To see it in
+                    action, open the work section and click on one of the
+                    portfolio items and navigate through them.</p>
+                </div><span class="bl-icon bl-icon-close">Close</span>
+            </section>
+
+            <section id="bl-work-section">
+                <div class="bl-box">
+                    <h2>Works</h2>
+                </div>
+
+                <div class="bl-content">
+                    <h2>My Works</h2>
+
+                    <p>Mung bean maize dandelion sea lettuce catsear bunya nuts
+                    ricebean tatsoi caulie horseradish pea.</p>
+
+                    <ul id="bl-work-items">
+                        <li data-panel="panel-1">
+                            <a href="#"><img src="images/1.jpg"></a>
+                        </li>
+
+                        <li data-panel="panel-2">
+                            <a href="#"><img src="images/2.jpg"></a>
+                        </li>
+
+                        <li data-panel="panel-3">
+                            <a href="#"><img src="images/3.jpg"></a>
+                        </li>
+
+                        <li data-panel="panel-4">
+                            <a href="#"><img src="images/4.jpg"></a>
+                        </li>
+                    </ul>
+
+                    <p>Illustrations by <a href=
+                    "http://dribbble.com/isaac317/click">Isaac
+                    Montemayor</a></p>
+                </div><span class="bl-icon bl-icon-close">Close</span>
+            </section>
+
+<section style="background-color: #333; margin-left: 15px;">
+
+<h2>This website is under heavy reconstruction</h2>
+<br>
+<h1>Because of the Coronavirus, the school's schedule has been split up into two.
+    <br>
+    <br>
+    <i>Please select your respective schedule (A or B)</i>
+    <br>
+    <br>
+</h1>
+<br>
+<p>Sorry for the inconvienience.</p>
+<br>
+<br>
+<p style='font-size: small'>Thanks for continuing to use Bell Ninja.</p>
 
 
 
+<span class="bl-icon bl-icon-close">Close</span>
+            </section><!-- Panel items for the works -->
 
+            <div class="bl-panel-items" id="bl-panel-work-items">
+                <div data-panel="panel-1">
+                    <div>
+                        <img src="images/1.jpg">
 
+                        <h3>Fixie bespoke</h3>
 
+                        <p>Iphone artisan direct trade ethical Austin. Fixie
+                        bespoke banh mi ugh, deep v vinyl hashtag. Tumblr
+                        gentrify keffiyeh pop-up iphone twee biodiesel. Occupy
+                        american apparel freegan cliche. Mustache trust fund
+                        8-bit jean shorts mumblecore thundercats. Pour-over
+                        small batch forage cray, banjo post-ironic flannel
+                        keffiyeh cred ethnic semiotics next level tousled
+                        fashion axe. Sustainable cardigan keytar fap bushwick
+                        bespoke.</p>
+                    </div>
+                </div>
 
-            <!--div class="containerforalerts">
-<div class="alertf">
-  <span class="closebtnf">&times;</span>  
-  <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
-</div-->
-<!--?php 
-if ($_SESSION['verified'] == 'justdid') { $_SESSION['verified'] = 'null'; ?>
-<div class="alertf success">
-  <span class="closebtnf">&times;</span>  
-  <strong>Success!</strong> Your account has been verified. Please <a href='https://bell.ninja/login'>log in</a>
-</div>
-<?php } ?>
+                <div data-panel="panel-2">
+                    <div>
+                        <img src="images/2.jpg">
 
-<?php if ($_SESSION['verified'] == 'alreadydid') { $_SESSION['verified'] = 'null'; ?>
+                        <h3>Chillwave mustache</h3>
 
-<div class="alertf info">
-  <span class="closebtnf">&times;</span>  
-  <strong>Error!</strong> Your account is already verified! 
-</div>
-<?php } ?>
+                        <p>Squid vinyl scenester literally pug, hashtag tofu
+                        try-hard typewriter polaroid craft beer mlkshk cardigan
+                        photo booth PBR. Chillwave 90's gentrify american
+                        apparel carles disrupt. Pinterest semiotics
+                        single-origin coffee craft beer thundercats irony,
+                        tumblr bushwick intelligentsia pickled. Narwhal
+                        mustache godard master cleanse street art, occupy ugh
+                        selfies put a bird on it cray salvia four loko
+                        gluten-free shoreditch.</p>
+                    </div>
+                </div>
 
+                <div data-panel="panel-3">
+                    <div>
+                        <img src="images/3.jpg">
 
-<?php if ($_SESSION['foundemail'] == 'False') { $_SESSION['foundemail'] = 'null'; ?>
+                        <h3>Austin hella</h3>
 
-<div class="alertf info">
-  <span class="closebtnf">&times;</span>  
-  <strong>Sorry!</strong> We could not find an account associated with that email. 
-</div>
-<?php } ?>
+                        <p>Ethical cray wayfarers leggings vice, seitan banksy
+                        small batch ethnic master cleanse. Pug chillwave etsy,
+                        scenester meh occupy blue bottle tousled blog tonx
+                        pinterest selvage mixtape swag cosby sweater. Synth
+                        tousled direct trade, hella Austin craft beer ugh
+                        chambray.</p>
+                    </div>
+                </div>
 
-<?php if ($_SESSION['foundemail'] == 'True') { $_SESSION['foundemail'] = 'null'; ?>
+                <div data-panel="panel-4">
+                    <div>
+                        <img src="images/4.jpg">
 
-<div class="alertf success">
-  <span class="closebtnf">&times;</span>  
-  <strong>Success!</strong> We sent an email to reset your password. 
-</div>
-<?php } ?>
+                        <h3>Brooklyn dreamcatcher</h3>
 
+                        <p>Fashion axe 90's pug fap. Blog wayfarers brooklyn
+                        dreamcatcher, bicycle rights retro YOLO. Wes anderson
+                        lomo 90's food truck 3 wolf moon, twee jean shorts.
+                        Iphone small batch twee wolf yr before they sold out.
+                        Brooklyn echo park cred, portland pug selvage flannel
+                        seitan tousled mcsweeney's.</p>
+                    </div>
+                </div>
 
-
-<?php if ($_SESSION['passresetstatus'] == 'True') { $_SESSION['passresetstatus'] = 'null'; ?>
-<div class="alertf success">
-  <span class="closebtnf">&times;</span>  
-  <strong>Success!</strong> Your password has been updated! Please <a href="https://bell.ninja/login">log in.</a> 
-</div>
-<?php } ?>
-
-<?php if ($_SESSION['chatverify'] == 'False') { $_SESSION['chatverify'] = 'null';?>
-
-  <div class="alertf warning">
-  <span class="closebtnf">&times;</span>  
-  <strong>Error!</strong> To use chat, please click the link in your email to verify your account.</a> 
-</div>
-
-  <?php } ?>
-
-
-  <?php session_start(); if ($_SESSION['rankchange'] == 'up') { $_SESSION['rankchange'] = 'null';?>
-
-<div class="alertf success">
-<span class="closebtnf">&times;</span>  
-<strong>Thank you!</strong> Disabling adblock supports this website. 
-  <?php if($_SESSION['addisabled']=='False') { 
-
-            if($_SESSION['status']=='member') {$_SESSION['status']='supporter';}
-
-                              
-                              
-                              
-                              
-                              // Store data in temp vars
-                              $currentcoins = $_SESSION['coins'];
-  
-  
-  
-                              $givingcoins = 25;
-                              
-                              
-                              
-                              $updatecoins = $currentcoins + $givingcoins;
-                              //Give Coins
-                              
-                              // Close statement
-                              mysqli_stmt_close($stmt);
-                              require_once "config.php";
-                              
-                              $sql = "UPDATE users SET coins = ?, addisabled = 'True' WHERE id = ?";
-                              
-                              $stmt = mysqli_prepare($link, $sql);
-                              // Bind variables to the prepared statement as parameters
-                              mysqli_stmt_bind_param($stmt, "ii", $param_coins, $param_id);
-                              
-                              // Set parameters
-                              $param_coins = $updatecoins;
-                              $param_id    = $_SESSION['id'];
-                              // Attempt to execute the prepared statement
-                              mysqli_stmt_execute($stmt);
-                  
-                  // Close statement
-                  mysqli_stmt_close($stmt);
-                  
-              
-              // Close connection
-              mysqli_close($link);
-                    
-  ?>
-  To thank you, we added <b style='color: orange;'>25</b> coins to your account and upgraded you to a <b style='color: lightblue;'>supporter</b>!
-  </div>
-  <?php } else { ?>
-    To thank you, we upgraded you to a <b style='color: lightblue;'>supporter</b>!
+                <nav>
+                    <span class="bl-next-work">&gt; Next Project</span>
+                    <span class="bl-icon bl-icon-close"></span>
+                </nav>
+            </div>
+        </div>
     </div>
-<?php } ?>
-</div>
-<?php } ?>
-
-
-
-
-
-
-
-<?php if ($_SESSION['rankchange'] == 'down') { $_SESSION['rankchange'] = 'null';?-->
-<!--pass-->
-<!--?php } ?-->
-
-
-
-
-
-
-
-
-
-<audio id="bell">
-  <source src="./img/guitarbell.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. (It's a bell noise.)
-</audio>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--div class="alertf info">
-  <span class="closebtnf">&times;</span>  
-  <strong>Info!</strong> Indicates a neutral informative change or action.
-</div>
-
-<div class="alertf warning">
-  <span class="closebtnf">&times;</span>  
-  <strong>Warning!</strong> Indicates a warning that might need attention.
-</div>
-</div-->
-<script>
-var close = document.getElementsByClassName("closebtnf");
-var i;
-
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function(){
-    var div = this.parentElement;
-    div.style.opacity = "0";
-    setTimeout(function(){ div.style.display = "none"; }, 600);
-  }
-}
-
-
+</div><!-- /container -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <script src="js/boxlayout.js"></script> <script>
+            $(function() {
+                Boxlayout.init();
+            });
 </script>
 
+<!-- 
 
+Hi, hope you like that layout idea, 
+the original tutorial you will find
+here: https://tympanus.net/codrops/2013/04/23/fullscreen-layout-with-page-transitions/ 
 
+code is under the MIT License
+-->
 
+</body>
 
+<footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
+    <script>
+        /* Modernizr 2.6.2 (Custom Build) | MIT & BSD
+ * Build: https://modernizr.com/download/#-cssanimations-csstransitions-touch-shiv-cssclasses-prefixed-teststyles-testprop-testallprops-prefixes-domprefixes-load
+ */
+;window.Modernizr=function(a,b,c){function z(a){j.cssText=a}function A(a,b){return z(m.join(a+";")+(b||""))}function B(a,b){return typeof a===b}function C(a,b){return!!~(""+a).indexOf(b)}function D(a,b){for(var d in a){var e=a[d];if(!C(e,"-")&&j[e]!==c)return b=="pfx"?e:!0}return!1}function E(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:B(f,"function")?f.bind(d||b):f}return!1}function F(a,b,c){var d=a.charAt(0).toUpperCase()+a.slice(1),e=(a+" "+o.join(d+" ")+d).split(" ");return B(b,"string")||B(b,"undefined")?D(e,b):(e=(a+" "+p.join(d+" ")+d).split(" "),E(e,b,c))}var d="2.6.2",e={},f=!0,g=b.documentElement,h="modernizr",i=b.createElement(h),j=i.style,k,l={}.toString,m=" -webkit- -moz- -o- -ms- ".split(" "),n="Webkit Moz O ms",o=n.split(" "),p=n.toLowerCase().split(" "),q={},r={},s={},t=[],u=t.slice,v,w=function(a,c,d,e){var f,i,j,k,l=b.createElement("div"),m=b.body,n=m||b.createElement("body");if(parseInt(d,10))while(d--)j=b.createElement("div"),j.id=e?e[d]:h+(d+1),l.appendChild(j);return f=["&#173;",'<style id="s',h,'">',a,"</style>"].join(""),l.id=h,(m?l:n).innerHTML+=f,n.appendChild(l),m||(n.style.background="",n.style.overflow="hidden",k=g.style.overflow,g.style.overflow="hidden",g.appendChild(n)),i=c(l,a),m?l.parentNode.removeChild(l):(n.parentNode.removeChild(n),g.style.overflow=k),!!i},x={}.hasOwnProperty,y;!B(x,"undefined")&&!B(x.call,"undefined")?y=function(a,b){return x.call(a,b)}:y=function(a,b){return b in a&&B(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=u.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(u.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(u.call(arguments)))};return e}),q.touch=function(){var c;return"ontouchstart"in a||a.DocumentTouch&&b instanceof DocumentTouch?c=!0:w(["@media (",m.join("touch-enabled),("),h,")","{#modernizr{top:9px;position:absolute}}"].join(""),function(a){c=a.offsetTop===9}),c},q.cssanimations=function(){return F("animationName")},q.csstransitions=function(){return F("transition")};for(var G in q)y(q,G)&&(v=G.toLowerCase(),e[v]=q[G](),t.push((e[v]?"":"no-")+v));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)y(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof f!="undefined"&&f&&(g.className+=" "+(b?"":"no-")+a),e[a]=b}return e},z(""),i=k=null,function(a,b){function k(a,b){var c=a.createElement("p"),d=a.getElementsByTagName("head")[0]||a.documentElement;return c.innerHTML="x<style>"+b+"</style>",d.insertBefore(c.lastChild,d.firstChild)}function l(){var a=r.elements;return typeof a=="string"?a.split(" "):a}function m(a){var b=i[a[g]];return b||(b={},h++,a[g]=h,i[h]=b),b}function n(a,c,f){c||(c=b);if(j)return c.createElement(a);f||(f=m(c));var g;return f.cache[a]?g=f.cache[a].cloneNode():e.test(a)?g=(f.cache[a]=f.createElem(a)).cloneNode():g=f.createElem(a),g.canHaveChildren&&!d.test(a)?f.frag.appendChild(g):g}function o(a,c){a||(a=b);if(j)return a.createDocumentFragment();c=c||m(a);var d=c.frag.cloneNode(),e=0,f=l(),g=f.length;for(;e<g;e++)d.createElement(f[e]);return d}function p(a,b){b.cache||(b.cache={},b.createElem=a.createElement,b.createFrag=a.createDocumentFragment,b.frag=b.createFrag()),a.createElement=function(c){return r.shivMethods?n(c,a,b):b.createElem(c)},a.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+l().join().replace(/\w+/g,function(a){return b.createElem(a),b.frag.createElement(a),'c("'+a+'")'})+");return n}")(r,b.frag)}function q(a){a||(a=b);var c=m(a);return r.shivCSS&&!f&&!c.hasCSS&&(c.hasCSS=!!k(a,"article,aside,figcaption,figure,footer,header,hgroup,nav,section{display:block}mark{background:#FF0;color:#000}")),j||p(a,c),a}var c=a.html5||{},d=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,e=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,f,g="_html5shiv",h=0,i={},j;(function(){try{var a=b.createElement("a");a.innerHTML="<xyz></xyz>",f="hidden"in a,j=a.childNodes.length==1||function(){b.createElement("a");var a=b.createDocumentFragment();return typeof a.cloneNode=="undefined"||typeof a.createDocumentFragment=="undefined"||typeof a.createElement=="undefined"}()}catch(c){f=!0,j=!0}})();var r={elements:c.elements||"abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video",shivCSS:c.shivCSS!==!1,supportsUnknownElements:j,shivMethods:c.shivMethods!==!1,type:"default",shivDocument:q,createElement:n,createDocumentFragment:o};a.html5=r,q(b)}(this,b),e._version=d,e._prefixes=m,e._domPrefixes=p,e._cssomPrefixes=o,e.testProp=function(a){return D([a])},e.testAllProps=F,e.testStyles=w,e.prefixed=function(a,b,c){return b?F(a,b,c):F(a,"pfx")},g.className=g.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(f?" js "+t.join(" "):""),e}(this,this.document),function(a,b,c){function d(a){return"[object Function]"==o.call(a)}function e(a){return"string"==typeof a}function f(){}function g(a){return!a||"loaded"==a||"complete"==a||"uninitialized"==a}function h(){var a=p.shift();q=1,a?a.t?m(function(){("c"==a.t?B.injectCss:B.injectJs)(a.s,0,a.a,a.x,a.e,1)},0):(a(),h()):q=0}function i(a,c,d,e,f,i,j){function k(b){if(!o&&g(l.readyState)&&(u.r=o=1,!q&&h(),l.onload=l.onreadystatechange=null,b)){"img"!=a&&m(function(){t.removeChild(l)},50);for(var d in y[c])y[c].hasOwnProperty(d)&&y[c][d].onload()}}var j=j||B.errorTimeout,l=b.createElement(a),o=0,r=0,u={t:d,s:c,e:f,a:i,x:j};1===y[c]&&(r=1,y[c]=[]),"object"==a?l.data=c:(l.src=c,l.type=a),l.width=l.height="0",l.onerror=l.onload=l.onreadystatechange=function(){k.call(this,r)},p.splice(e,0,u),"img"!=a&&(r||2===y[c]?(t.insertBefore(l,s?null:n),m(k,j)):y[c].push(l))}function j(a,b,c,d,f){return q=0,b=b||"j",e(a)?i("c"==b?v:u,a,b,this.i++,c,d,f):(p.splice(this.i++,0,a),1==p.length&&h()),this}function k(){var a=B;return a.loader={load:j,i:0},a}var l=b.documentElement,m=a.setTimeout,n=b.getElementsByTagName("script")[0],o={}.toString,p=[],q=0,r="MozAppearance"in l.style,s=r&&!!b.createRange().compareNode,t=s?l:n.parentNode,l=a.opera&&"[object Opera]"==o.call(a.opera),l=!!b.attachEvent&&!l,u=r?"object":l?"script":"img",v=l?"script":u,w=Array.isArray||function(a){return"[object Array]"==o.call(a)},x=[],y={},z={timeout:function(a,b){return b.length&&(a.timeout=b[0]),a}},A,B;B=function(a){function b(a){var a=a.split("!"),b=x.length,c=a.pop(),d=a.length,c={url:c,origUrl:c,prefixes:a},e,f,g;for(f=0;f<d;f++)g=a[f].split("="),(e=z[g.shift()])&&(c=e(c,g));for(f=0;f<b;f++)c=x[f](c);return c}function g(a,e,f,g,h){var i=b(a),j=i.autoCallback;i.url.split(".").pop().split("?").shift(),i.bypass||(e&&(e=d(e)?e:e[a]||e[g]||e[a.split("/").pop().split("?")[0]]),i.instead?i.instead(a,e,f,g,h):(y[i.url]?i.noexec=!0:y[i.url]=1,f.load(i.url,i.forceCSS||!i.forceJS&&"css"==i.url.split(".").pop().split("?").shift()?"c":c,i.noexec,i.attrs,i.timeout),(d(e)||d(j))&&f.load(function(){k(),e&&e(i.origUrl,h,g),j&&j(i.origUrl,h,g),y[i.url]=2})))}function h(a,b){function c(a,c){if(a){if(e(a))c||(j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}),g(a,j,b,0,h);else if(Object(a)===a)for(n in m=function(){var b=0,c;for(c in a)a.hasOwnProperty(c)&&b++;return b}(),a)a.hasOwnProperty(n)&&(!c&&!--m&&(d(j)?j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}:j[n]=function(a){return function(){var b=[].slice.call(arguments);a&&a.apply(this,b),l()}}(k[n])),g(a[n],j,b,n,h))}else!c&&l()}var h=!!a.test,i=a.load||a.both,j=a.callback||f,k=j,l=a.complete||f,m,n;c(h?a.yep:a.nope,!!i),i&&c(i)}var i,j,l=this.yepnope.loader;if(e(a))g(a,0,l,0);else if(w(a))for(i=0;i<a.length;i++)j=a[i],e(j)?g(j,0,l,0):w(j)?B(j):Object(j)===j&&h(j,l);else Object(a)===a&&h(a,l)},B.addPrefix=function(a,b){z[a]=b},B.addFilter=function(a){x.push(a)},B.errorTimeout=1e4,null==b.readyState&&b.addEventListener&&(b.readyState="loading",b.addEventListener("DOMContentLoaded",A=function(){b.removeEventListener("DOMContentLoaded",A,0),b.readyState="complete"},0)),a.yepnope=k(),a.yepnope.executeStack=h,a.yepnope.injectJs=function(a,c,d,e,i,j){var k=b.createElement("script"),l,o,e=e||B.errorTimeout;k.src=a;for(o in d)k.setAttribute(o,d[o]);c=j?h:c||f,k.onreadystatechange=k.onload=function(){!l&&g(k.readyState)&&(l=1,c(),k.onload=k.onreadystatechange=null)},m(function(){l||(l=1,c(1))},e),i?k.onload():n.parentNode.insertBefore(k,n)},a.yepnope.injectCss=function(a,c,d,e,g,i){var e=b.createElement("link"),j,c=i?h:c||f;e.href=a,e.rel="stylesheet",e.type="text/css";for(j in d)e.setAttribute(j,d[j]);g||(n.parentNode.insertBefore(e,n),m(c,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))};
 
+/**
+ * boxlayout.js v1.0.0
+ * http://www.codrops.com
+ *
+ * Licensed under the MIT license.
+ * https://www.opensource.org/licenses/mit-license.php
+ * 
+ * Copyright 2013, Codrops
+ * http://www.codrops.com
+ */
+var Boxlayout = (function() {
 
+	var $el = $( '#bl-main' ),
+		$sections = $el.children( 'section' ),
+		// works section
+		$sectionWork = $( '#bl-work-section' ),
+		// work items
+		$workItems = $( '#bl-work-items > li' ),
+		// work panels
+		$workPanelsContainer = $( '#bl-panel-work-items' ),
+		$workPanels = $workPanelsContainer.children( 'div' ),
+		totalWorkPanels = $workPanels.length,
+		// navigating the work panels
+		$nextWorkItem = $workPanelsContainer.find( 'nav > span.bl-next-work' ),
+		// if currently navigating the work items
+		isAnimating = false,
+		// close work panel trigger
+		$closeWorkItem = $workPanelsContainer.find( 'nav > span.bl-icon-close' ),
+		transEndEventNames = {
+			'WebkitTransition' : 'webkitTransitionEnd',
+			'MozTransition' : 'transitionend',
+			'OTransition' : 'oTransitionEnd',
+			'msTransition' : 'MSTransitionEnd',
+			'transition' : 'transitionend'
+		},
+		// transition end event name
+		transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+		// support css transitions
+		supportTransitions = Modernizr.csstransitions;
 
+	function init() {
+		initEvents();
+	}
 
+	function initEvents() {
+		
+		$sections.each( function() {
+			
+			var $section = $( this );
 
+			// expand the clicked section and scale down the others
+			$section.on( 'click', function() {
 
+				if( !$section.data( 'open' ) ) {
+					$section.data( 'open', true ).addClass( 'bl-expand bl-expand-top' );
+					$el.addClass( 'bl-expand-item' );	
+				}
 
+			} ).find( 'span.bl-icon-close' ).on( 'click', function() {
+				
+				// close the expanded section and scale up the others
+				$section.data( 'open', false ).removeClass( 'bl-expand' ).on( transEndEventName, function( event ) {
+					if( !$( event.target ).is( 'section' ) ) return false;
+					$( this ).off( transEndEventName ).removeClass( 'bl-expand-top' );
+				} );
 
+				if( !supportTransitions ) {
+					$section.removeClass( 'bl-expand-top' );
+				}
 
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <h1>Schedule Clock
-  </h1>
-  <div class="flip-box">
-    <div class="flip-box-inner">
-      <div class="flip-box-front">
-        <div id="clockdiv">
-          <div>
-            <span class="days">
-            </span>
-            <div class="smalltext">Days
-            </div>
-          </div>
-          <div>
-            <span class="hours">
-            </span>
-            <div class="smalltext">Hours
-            </div>
-          </div>
-          <div>
-            <span class="minutes">
-            </span>
-            <div class="smalltext">Minutes
-            </div>
-          </div>
-          <div>
-            <span class="seconds">
-            </span>
-            <div class="smalltext">Seconds
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="flip-box-back">
-        <br>
-        <h2>
-          <p id="demo4">
-          </p>
-        </h2>
-      </div>
-    </div>
-  </div>
-  <br>
-  <br>
-  <br>
-  
-  <!--div id="share-buttons">
-    < Email >
-    <a href="mailto:?Subject=Hey, check out this useful website from CMD Book&amp;Body=This%20website%20tells%20you%20when%20the%20bell%20rings!%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20 https://bell.ninja">
-      <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
-    </a>
-    < Print >
-    <a href="javascript:;" onclick="window.print()">
-      <img src="https://simplesharebuttons.com/images/somacro/print.png" alt="Print" />
-    </a>
-  </div-->
-  <hr>
-  <br>
-  <p id="demo" style="font-size:23px">
-  </p>
-  <p id="demo2" style="visibility:hidden">
-  </p>
-  <p id="demo3">
-  </p>
-  <!--i>This page <a href="https://bell.ninja">refreshes</a> every thirty seconds.</i-->
-  <i>Stay safe everyone!
-  </i>
-  <br>
-<p><span style='text-decoration: line-through;'>It's summer school time.</span> It's time to fix our sleep schedules. <br><br>
-If the countdown timer seems off, please check the time of your device.<br><br>
-When the countdown hit zero, a noise will ring if you had interacted with the page. (Clicked on it)</p>
-  <br>
-  <br>
-  <br>
-  <hr>
-  <div>
-  </div>
-  <div id = "container" style = "width:100%">
-    <div id ="left" style = "float:left; width: 25%;">
-    </div>
-    <div id = "middle" style = "float:left; width: 50%;">
-    </div>
-    <div id = "right" style = "float:left; width: 25%;">
-    </div>
-  </div>
-  <!--div class="snote" style="position: relative; left: 130px; top: -600px;"-->
-<ul>
-<!--li>
-<a href="https://bell.ninja/note" style="opacity:0.5;">
-<h2>Important Note!</h2><hr />
-<p>Welcome to a new Bell Ninja update! Click me to read more.</p>
-</a>
-</li-->
-<!--li>
-<a href="#LINK 2">
-<h2>Note #2</h2><hr />
-<p>Note Content #2</p>
-</a>
-<li>
-<li>
-<a href="#LINK 3">
-<h2>Note  #3</h2><hr />
-<p>Note Content #3</p>
-</a>
-</li>
-<li>
-<a href="#LINK 4">
-<h2>Note #4</h2><hr />
-<p>Note Content #4</p>
-</a>
-</li>
-<li>
-<a href="#LINK 5">
-<h2>Note #5</h2><hr />
-<p>Note Content #5</p>
-</a>
-</li>
-</ul>
-</div-->
-<br>
-<br>
-<br>
-<br>
-<br>
-<img src='https://d2wcro6av4bts2.cloudfront.net/wp-content/uploads/2019/06/angels.jpg' style='width: 300px; border-radius: 25px;'>
-  <script src="bell.js">
-  </script>
+				$el.removeClass( 'bl-expand-item' );
+				
+				return false;
 
+			} );
 
+		} );
 
+		// clicking on a work item: the current section scales down and the respective work panel slides up
+		$workItems.on( 'click', function( event ) {
 
+			// scale down main section
+			$sectionWork.addClass( 'bl-scale-down' );
 
+			// show panel for this work item
+			$workPanelsContainer.addClass( 'bl-panel-items-show' );
 
-  <br>
-  <br>
-<!--?php
-//if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-?>
-<br>
-<br>
-<br>
-<br>
-<br>
-  <center>
-    <h1 style="font-size:33px;" class="fade-in">Information
-    </h1>
-    <div class="fade-in">
-      <p style="font-size:17px;">Bell.Ninja is a website that answers a common and constant question asked throughout the day: 
-        <br>
-        When is the next class bell going to ring? 
-        <br>
-        <br>
-        Bell Ninja also assists in satisfying additional possible curiosity by providing 
-        <br>
-        users with the ability to view today's 
-        <a href="https://bell.ninja/lunch.php" style="color: blue;">lunch
-        </a> and> 
-        <a href="https://bell.ninja/chat.php" style="color: blue;">communication
-        </a> meta.
-        <br>
-        <br>
-        <a href="https://bell.ninja/forums.php" style="color: blue;">Forums
-        </a> are also available to further improve communication among peers. General questions concerning 
-        <br> 
-        events and other school related information can be traded.
-      </p>
-    </div>
-  </center-->
-  <!--?php
-//} else {
-?-->
+			var $panel = $workPanelsContainer.find("[data-panel='" + $( this ).data( 'panel' ) + "']");
+			currentWorkPanel = $panel.index();
+			$panel.addClass( 'bl-show-work' );
 
-<br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-<center>
-  <div data-role="main" class="ui-content">
-    <div data-role="collapsible">
-      <h1>Schedule</h1>
-      <!--img src="./img/schedule.PNG"></img-->
-      <img src="./img/covid-summer-sch.png"></img>
-    </div>
-  </div>
-  </center>
+			return false;
 
+		} );
 
+		// navigating the work items: current work panel scales down and the next work panel slides up
+		$nextWorkItem.on( 'click', function( event ) {
+			
+			if( isAnimating ) {
+				return false;
+			}
+			isAnimating = true;
 
+			var $currentPanel = $workPanels.eq( currentWorkPanel );
+			currentWorkPanel = currentWorkPanel < totalWorkPanels - 1 ? currentWorkPanel + 1 : 0;
+			var $nextPanel = $workPanels.eq( currentWorkPanel );
 
+			$currentPanel.removeClass( 'bl-show-work' ).addClass( 'bl-hide-current-work' ).on( transEndEventName, function( event ) {
+				if( !$( event.target ).is( 'div' ) ) return false;
+				$( this ).off( transEndEventName ).removeClass( 'bl-hide-current-work' );
+				isAnimating = false;
+			} );
 
-<!--?php
-//}
-?-->
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  </html>
-  <footer class="footer">
-    <div class="footer_top">
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-4 col-md-6 col-lg-4">
-            <div class="footer_widget">
-              <div class="footer_logo">
-                <a href="https://cmdbook.com">
-                  <h1>CMD Book
-                  </h1>
-                </a>
-              </div>
-              <p>
-                CMD Book Copyright &copy; 
-                <script>document.write(new Date().getFullYear());
-                </script> All rights reserved | Visit "company" page. 
-                <a href="https://cmdbook.com" target="_blank" style="text-decoration: none;">Here
-                </a>
-              </p>
-              <div class="socail_links">
-                <ul>
-                  <li>
-                    <a href="https://www.facebook.com/donate/782426058950749/">
-                      <i class="ti-facebook">
-                      </i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.facebook.com/donate/782426058950749/">
-                      <i class="ti-twitter-alt">
-                      </i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.facebook.com/donate/782426058950749/">
-                      <i class="fa fa-instagram">
-                      </i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3">
-            <div class="footer_widget">
-              <h3 class="footer_title">
-                Miscellaneous
-              </h3>
-              <ul>
-                <li>
-                  <a href="https://github.com/period8/bell-ninja-static">Source Code
-                  </a>
-                </li>
-                <li>
-                  <a href="https://bell.ninja/settings" target="_blank">Settings
-                  </a>
-                </li>
-                <li>
-                  <a href="https://bell.ninja/login" target="_blank">Sign In
-                  </a>
-                </li>
-                <li>
-                  <a href="https://bell.ninja/register" target="_blank">Sign Up
-                  </a>
-                </li>
-                <li>
-                  <a href="https://bell.ninja/terms" target="_blank">Terms
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-2 col-md-6 col-lg-2">
-            <div class="footer_widget">
-              <h3 class="footer_title">
-                Useful Links
-              </h3>
-              <ul>
-                <li>
-                  <a href="https://bell.ninja/register" target="_blank">Sign Up
-                  </a>
-                </li>
-                <li>
-                  <a href="https://bell.ninja/login" target="_blank">Sign In
-                  </a>
-                </li>
-                <li>
-                  <a href="https://bell.ninja/contact" target="_blank">Contact
-                  </a>
-                </li>
-                <li>
-                  <a href="https://cmdbook.com" target="_blank">Head Website
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-3 col-md-6 col-lg-3">
-            <div class="footer_widget">
-              <h3 class="footer_title">
-                Other Websites
-              </h3>
-              <ul>
-                <li>
-                  <a href="https://cmdbook.com">
-                    CMD Book
-                  </a>
-                </li>
-                <li>
-                  <a href="https://riviera.tools">
-                    Riviera Toolkit
-                  </a>
-                </li>
-                <li>
-                  <a href="https://panicstudy.com">
-                    Panic Study
-                  </a>
-                </li>
-                <li>
-                  <a href="http://riviera.digital">
-                    Riviera Digital
-                  </a>
-                </li>
-                <br>
-              </ul>
-              <!--form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_donations" />
-<input type="hidden" name="business" value="TA85UA74QAMWL" />
-<input type="hidden" name="item_name" value="Help Support This Website!" />
-<input type="hidden" name="currency_code" value="USD" />
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-</form-->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+			if( !supportTransitions ) {
+				$currentPanel.removeClass( 'bl-hide-current-work' );
+				isAnimating = false;
+			}
+			
+			$nextPanel.addClass( 'bl-show-work' );
+
+			return false;
+
+		} );
+
+		// clicking the work panels close button: the current work panel slides down and the section scales up again
+		$closeWorkItem.on( 'click', function( event ) {
+
+			// scale up main section
+			$sectionWork.removeClass( 'bl-scale-down' );
+			$workPanelsContainer.removeClass( 'bl-panel-items-show' );
+			$workPanels.eq( currentWorkPanel ).removeClass( 'bl-show-work' );
+			
+			return false;
+
+		} );
+
+	}
+
+	return { init : init };
+
+})();
+
+/* src https://tympanus.net/codrops/2013/04/23/fullscreen-layout-with-page-transitions/ */
+    </script>
+</footer>
+</html>
