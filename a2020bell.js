@@ -31,7 +31,7 @@ function getsch() {
  
         ///// Coronavirus 2020-2021 A SCHEDULE
         if (n == 2020-0) {
-            dayweek = "Coronavirus - Remote Teaching Schedule"
+            dayweek = "Coronavirus - Remote Teaching Schedule A"
             //var timex = new Date().getHours();
             if (timex >= 1.00 && timex < 8.00) {
                 period = "Early Bird"
