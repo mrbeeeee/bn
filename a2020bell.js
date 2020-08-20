@@ -136,8 +136,9 @@ function scheduleA() {
                     classis = false;
                 } else if (timex >= 14.45 && timex <= 24.59) {
                     period = "School Day Ended"
-                    var timel = "24:00:00";
+                    var timel = "00:00:00";
                     classis = false;
+                    bmessage = "Have a great rest of your day!"
                 } else {
                     period = "Intermission"
                     var timel = "1:00:00";
