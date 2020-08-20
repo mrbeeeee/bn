@@ -313,7 +313,7 @@ function scheduleB() {
         var i;
     
         if (typeof status === 'string') {
-            alert(status);
+            console.log(status);
         }
     
         window.addEventListener('error', function (e) {e.preventDefault();e.stopPropagation();}, false);
