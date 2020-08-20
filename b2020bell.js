@@ -1,4 +1,4 @@
-function scheduleA() {
+function scheduleB() {
 
     audio = new Audio('./img/guitarbell.mp3');
 
@@ -130,7 +130,7 @@ function scheduleA() {
         document.getElementById("demo-b").innerHTML = period;
         document.getElementById("demo2-b").innerHTML = timex;
         document.getElementById("demo3-b").innerHTML = dayweek;
-        document.getElementById("demo4-b").innerHTML = bmessage;
+        //document.getElementById("demo4-b").innerHTML = bmessage;
 
         ////////////////
         //var timel = "15:20:00";

@@ -130,7 +130,7 @@ function scheduleA() {
         document.getElementById("demo-a").innerHTML = period;
         document.getElementById("demo2-a").innerHTML = timex;
         document.getElementById("demo3-a").innerHTML = dayweek;
-        document.getElementById("demo4-a").innerHTML = bmessage;
+        //document.getElementById("demo4-a").innerHTML = bmessage;
 
         ////////////////
         //var timel = "15:20:00";
