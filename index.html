@@ -45,7 +45,7 @@
 <div class="container">
     <div class="conta">
         <div class="bl-main" id="bl-main">
-            <section>
+            <section onclick="scheduleA()">
                 <div class="bl-box">
                     <h2>Schedule A</h2>
                 </div>
@@ -119,7 +119,8 @@
                 <span class="bl-icon-close" style='opacity: 0.85;'><i class="fa fa-times fa-3x" aria-hidden="true"></i></span></div>
             </section>
 
-            <section>
+
+            <section onclick="scheduleB()">
                 <div class="bl-box">
                     <h2>Schedule B</h2>
                 </div>
@@ -136,7 +137,7 @@
                     <div class="flip-box">
                       <div class="flip-box-inner">
                         <div class="flip-box-front">
-                          <div id="clockdiv1">
+                          <div id="clockdiv2">
                             <div>
                               <span class="daysB">
                               </span>
@@ -192,6 +193,7 @@
                     <br>
                     <span class="bl-icon-close" style='opacity: 0.85;'><i class="fa fa-times fa-3x" aria-hidden="true"></i></span></div>
             </section>
+
 
             <section>
                 <div class="bl-box">
@@ -375,9 +377,21 @@
 
 <footer>
 
+<!-- Initialize Clocks dependent on clicking on stuff :D -->
+<!--script>
+    function scheduleA() { 
+        console.log("It fucking works");
+    }
+
+</script>
 
 
 
+<script>
+    function scheduleB() { 
+        // do something
+    }
+</script-->
 
 
 
@@ -413,7 +427,7 @@
 
 
     <script src='a2020bell.js'></script>
-    <!--script src='b2020bell.js'></script-->
+    <script src='b2020bell.js'></script>
 
 
 

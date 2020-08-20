@@ -561,6 +561,29 @@ border-radius: 3px;
 background: #c4351c;
 display: inline-block;
 }
+
+#clockdiv2 {
+font-family: sans-serif;
+color: #fff;
+display: inline-block;
+font-weight: 100;
+text-align: center;
+font-size: 35px;
+}
+#clockdiv2>div {
+padding: 10px;
+border-radius: 3px;
+background: #cf533d;
+display: inline-block;
+}
+#clockdiv2 div>span {
+padding: 25px;
+border-radius: 3px;
+background: #c4351c;
+display: inline-block;
+}
+
+
 .smalltext {
 padding-top: 5px;
 font-size: 16px;
@@ -670,4 +693,3 @@ top: 8px;
 right: 16px;
 font-size: 18px;
 }
-</style>
