@@ -136,7 +136,7 @@ function scheduleA() {
                     classis = false;
                 } else if (timex >= 14.45 && timex <= 24.59) {
                     period = "School Day Ended"
-                    //var timel = "24:59:59";
+                    var timel = "24:59:59";
                     classis = false;
                     bmessage = "Have a great rest of your day!"
                 } else {
@@ -298,11 +298,13 @@ function scheduleA() {
     scheduleA();
     }, timeoutx);
 
+    /*
     if (accepted()) {
 
         document.cookie = "audioenabled = True";
 
     }
+    */
 
 
 
