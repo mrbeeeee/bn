@@ -117,7 +117,7 @@ function scheduleA() {
                 } else if (timex >= 13.40 && timex < 13.50) {
                     period = "Take 10. We're back at 1:50 PM"
                     bmessage = "P6A to P7 Intermission -  2:40 PM to 2:50 PM"
-                    var timel = "14:50:00";
+                    var timel = "13:50:00";
                     classis = false;
                 } else if (timex >= 13.50 && timex < 14.30) {
                     period = "Period 7"
@@ -127,7 +127,7 @@ function scheduleA() {
                 } else if (timex >= 14.30 && timex < 14.40) {
                     period = "Take 10. We're back at 2:40 PM"
                     bmessage = "P7 to P8 Intermission -  2:30 PM to 2:40 PM"
-                    var timel = "14:50:00";
+                    var timel = "14:40:00";
                     classis = false;
                 } else if (timex >= 14.40 && timex < 15.20) {
                     period = "Period 8"
@@ -136,7 +136,7 @@ function scheduleA() {
                     classis = false;
                 } else if (timex >= 14.45 && timex <= 24.59) {
                     period = "School Day Ended"
-                    var timel = "24:59:59";
+                    //var timel = "24:59:59";
                     classis = false;
                     bmessage = "Have a great rest of your day!"
                 } else {
