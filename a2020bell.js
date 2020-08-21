@@ -143,6 +143,7 @@ function scheduleA() {
                     period = "Intermission"
                     var timel = "1:00:00";
                     classis = false;
+                    exit("Program Terminated to prevent the bell 'sound loop' bug.");
                 }
             };
 

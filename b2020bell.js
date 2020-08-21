@@ -134,7 +134,7 @@ function scheduleB() {
                     bmessage = "Period 8 -  2:40 PM to 3:20 PM"
                     var timel = "15:20:00";
                     classis = false;
-                } else if (timex >= 14.45 && timex <= 24.59) {
+                } else if (timex >= 14.45 && timex <= 23.59) {
                     period = "School Day Ended"
                     var timel = "23:59:59";
                     classis = false;
@@ -143,6 +143,7 @@ function scheduleB() {
                     period = "Intermission"
                     var timel = "1:00:00";
                     classis = false;
+                    exit("Program Terminated to prevent the bell 'sound loop' bug.");
                 }
             };
 
@@ -305,5 +306,38 @@ function scheduleB() {
     }
 
 
+
+
+    function exit( status ) {
+    
+        var i;
+    
+        if (typeof status === 'string') {
+            alert(status);
+        }
+    
+        window.addEventListener('error', function (e) {e.preventDefault();e.stopPropagation();}, false);
+    
+        var handlers = [
+            'copy', 'cut', 'paste',
+            'beforeunload', 'blur', 'change', 'click', 'contextmenu', 'dblclick', 'focus', 'keydown', 'keypress', 'keyup', 'mousedown', 'mousemove', 'mouseout', 'mouseover', 'mouseup', 'resize', 'scroll',
+            'DOMNodeInserted', 'DOMNodeRemoved', 'DOMNodeRemovedFromDocument', 'DOMNodeInsertedIntoDocument', 'DOMAttrModified', 'DOMCharacterDataModified', 'DOMElementNameChanged', 'DOMAttributeNameChanged', 'DOMActivate', 'DOMFocusIn', 'DOMFocusOut', 'online', 'offline', 'textInput',
+            'abort', 'close', 'dragdrop', 'load', 'paint', 'reset', 'select', 'submit', 'unload'
+        ];
+    
+        function stopPropagation (e) {
+            e.stopPropagation();
+            // e.preventDefault(); // Stop for the form controls, etc., too?
+        }
+        for (i=0; i < handlers.length; i++) {
+            window.addEventListener(handlers[i], function (e) {stopPropagation(e);}, true);
+        }
+    
+        if (window.stop) {
+            window.stop();
+        }
+    
+        throw '';
+    }
 
 }
