@@ -1,5 +1,5 @@
-function scheduleA() {
-    
+function scheduleB() {
+
     audio = new Audio('./img/guitarbell.mp3');
 
     var d = new Date();
@@ -31,7 +31,7 @@ function scheduleA() {
         var timex = chour + "." + cminute;
 
     
-            ///// Coronavirus 2020-2021 A SCHEDULE
+            ///// Coronavirus 2020-2021 B SCHEDULE
             if (n == 2020) {
                 dayweek = "Coronavirus - First Day of School Exception Schedule (High School)"
                 //var timex = new Date().getHours();
@@ -154,10 +154,10 @@ function scheduleA() {
 
             
 
-        document.getElementById("demo-a").innerHTML = period;
-        document.getElementById("demo2-a").innerHTML = timex;
-        document.getElementById("demo3-a").innerHTML = dayweek;
-        document.getElementById("demo4-a").innerHTML = bmessage;
+        document.getElementById("demo-b").innerHTML = period;
+        document.getElementById("demo2-b").innerHTML = timex;
+        document.getElementById("demo3-b").innerHTML = dayweek;
+        document.getElementById("demo4-b").innerHTML = bmessage;
 
         ////////////////
         //var timel = "15:20:00";
@@ -240,10 +240,10 @@ function scheduleA() {
 
     function initializeClock(id, endtime) {
         var clock = document.getElementById(id);
-        var daysSpan = clock.querySelector('.daysA');
-        var hoursSpan = clock.querySelector('.hoursA');
-        var minutesSpan = clock.querySelector('.minutesA');
-        var secondsSpan = clock.querySelector('.secondsA');
+        var daysSpan = clock.querySelector('.daysB');
+        var hoursSpan = clock.querySelector('.hoursB');
+        var minutesSpan = clock.querySelector('.minutesB');
+        var secondsSpan = clock.querySelector('.secondsB');
 
         function updateClock() {
             var t = getTimeRemaining(endtime);
@@ -266,7 +266,7 @@ function scheduleA() {
 
     // Last number is mili seconds
     deadline = new Date(Date.parse(new Date()) + 1 * 1 * 1 * xsec * 1000);
-    initializeClock('clockdiv1', deadline);
+    initializeClock('clockdiv2', deadline);
 
     function checknull() {
         if (distance == 0) {
@@ -301,50 +301,48 @@ function scheduleA() {
 
     console.log(`seconds elapsed = ${Math.floor(millis/1000)}, playing bell`);
     playAudio();
-    scheduleA();
+    scheduleB();
     }, timeoutx);
 
-    /*
     if (accepted()) {
 
         document.cookie = "audioenabled = True";
 
     }
-    */
 
 
 
-   function exit( status ) {
+
+    function exit( status ) {
     
-    var i;
-
-    if (typeof status === 'string') {
-        console.log(status);
+        var i;
+    
+        if (typeof status === 'string') {
+            console.log(status);
+        }
+    
+        window.addEventListener('error', function (e) {e.preventDefault();e.stopPropagation();}, false);
+    
+        var handlers = [
+            'copy', 'cut', 'paste',
+            'beforeunload', 'blur', 'change', 'click', 'contextmenu', 'dblclick', 'focus', 'keydown', 'keypress', 'keyup', 'mousedown', 'mousemove', 'mouseout', 'mouseover', 'mouseup', 'resize', 'scroll',
+            'DOMNodeInserted', 'DOMNodeRemoved', 'DOMNodeRemovedFromDocument', 'DOMNodeInsertedIntoDocument', 'DOMAttrModified', 'DOMCharacterDataModified', 'DOMElementNameChanged', 'DOMAttributeNameChanged', 'DOMActivate', 'DOMFocusIn', 'DOMFocusOut', 'online', 'offline', 'textInput',
+            'abort', 'close', 'dragdrop', 'load', 'paint', 'reset', 'select', 'submit', 'unload'
+        ];
+    
+        function stopPropagation (e) {
+            e.stopPropagation();
+            // e.preventDefault(); // Stop for the form controls, etc., too?
+        }
+        for (i=0; i < handlers.length; i++) {
+            window.addEventListener(handlers[i], function (e) {stopPropagation(e);}, true);
+        }
+    
+        if (window.stop) {
+            window.stop();
+        }
+    
+        throw '';
     }
-
-    window.addEventListener('error', function (e) {e.preventDefault();e.stopPropagation();}, false);
-
-    var handlers = [
-        'copy', 'cut', 'paste',
-        'beforeunload', 'blur', 'change', 'click', 'contextmenu', 'dblclick', 'focus', 'keydown', 'keypress', 'keyup', 'mousedown', 'mousemove', 'mouseout', 'mouseover', 'mouseup', 'resize', 'scroll',
-        'DOMNodeInserted', 'DOMNodeRemoved', 'DOMNodeRemovedFromDocument', 'DOMNodeInsertedIntoDocument', 'DOMAttrModified', 'DOMCharacterDataModified', 'DOMElementNameChanged', 'DOMAttributeNameChanged', 'DOMActivate', 'DOMFocusIn', 'DOMFocusOut', 'online', 'offline', 'textInput',
-        'abort', 'close', 'dragdrop', 'load', 'paint', 'reset', 'select', 'submit', 'unload'
-    ];
-
-    function stopPropagation (e) {
-        e.stopPropagation();
-        // e.preventDefault(); // Stop for the form controls, etc., too?
-    }
-    for (i=0; i < handlers.length; i++) {
-        window.addEventListener(handlers[i], function (e) {stopPropagation(e);}, true);
-    }
-
-    if (window.stop) {
-        window.stop();
-    }
-
-    throw '';
-}
-
 
 }
