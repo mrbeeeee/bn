@@ -1,5 +1,5 @@
-function scheduleA() {
-    
+function scheduleB() {
+
     audio = new Audio('./img/guitarbell.mp3');
 
     var d = new Date();
@@ -31,115 +31,110 @@ function scheduleA() {
         var timex = chour + "." + cminute;
 
     
-            ///// Coronavirus 2020-2021 A SCHEDULE
+            ///// Coronavirus 2020-2021 B SCHEDULE
             if (n == 2020) {
-                dayweek = "Coronavirus - First Day of School Exception Schedule (High School)"
+                dayweek = "Coronavirus - 2020 Schedule (Middle School)"
                 //var timex = new Date().getHours();
                 if (timex >= 1.00 && timex < 8.00) {
                     period = "Early Bird"
                     var timel = "8:00:00";
                     classis = false;
-                } else if (timex >= 8.00 && timex < 9.00) {
-                    period = "Welcome/Orientation"
-                    bmessage = "Welcome/Orientation -  8:00 to 9:00"
-                    var timel = "9:00:00";
-                    classis = true;
-                } else if (timex >= 9.00 && timex < 9.30) {
-                    bmessage = "Period 1 -  9:00 to 9:30"
+                } else if (timex >= 8.00 && timex < 8.40) {
                     period = "Period 1"
+                    bmessage = "Period 1 -  8:00 to 8:40"
+                    var timel = "8:40:00";
+                    classis = true;
+                } else if (timex >= 8.40 && timex < 8.50) {
+                    period = "Take 10. We're back at 8:50"
+                    bmessage = "P1 to P2 Intermission -  8:40 to 8:50"
+                    var timel = "8:50:00";
+                    classis = false;
+                } else if (timex >= 8.50 && timex < 9.30) {
+                    bmessage = "Period 2 -  8:50 to 9:30"
+                    period = "Period 2"
                     var timel = "9:30:00";
                     classis = true;
                 } else if (timex >= 9.30 && timex < 9.40) {
+                    bmessage = "P2 to P3 Intermission -  9:30 to 9:40"
                     period = "Take 10. We're back at 9:40"
-                    bmessage = "P1 to P2 Intermission - 9:30 to 9:40"
                     var timel = "9:40:00";
                     classis = false;
-                } else if (timex >= 9.40 && timex < 10.10) {
-                    bmessage = "Period 2 -  9:40 to 10:10"
-                    period = "Period 2"
-                    var timel = "10:10:00";
-                    classis = true;
-                } else if (timex >= 10.10 && timex < 10.20) {
-                    bmessage = "P2 to P3 Intermission -  10:10 to 10:20"
-                    period = "Take 10. We're back at 10:20"
-                    var timel = "10:20:00";
-                    classis = false;
-                } else if (timex >= 10.20 && timex < 10.50) {
-                    bmessage = "Period 3 - 10:20 to 10:50"
+                } else if (timex >= 9.40 && timex < 10.20) {
+                    bmessage = "Period 3 - 9:40 to 10:20"
                     period = "Period 3"
-                    var timel = "10:50:00";
+                    var timel = "10:20:00";
                     classis = true;
-                } else if (timex >= 10.50 && timex < 11.00) {
+                } else if (timex >= 10.20 && timex < 10.30) {
                     period = "Take 10. We're back at 10:30"
-                    bmessage = "P3 to P4 Intermission -  10:50 to 11:00"
-                    var timel = "11:00:00";
+                    bmessage = "P3 to P4 Intermission -  10:20 to 10:30"
+                    var timel = "10:30:00";
                     classis = false;
-                } else if (timex >= 11.00 && timex < 11.30) {
-                    bmessage = "Period 4 - 11:00 to 11:30"
+                } else if (timex >= 10.30 && timex < 11.10) {
+                    bmessage = "Period 4 - 10:30 to 11:10"
                     period = "Period 4"
-                    var timel = "11:30:00";
+                    var timel = "11:10:00";
                     classis = true;
-                } else if (timex >= 11.30 && timex < 11.40) {
-                    period = "Take 10. We're back at 11:40"
-                    bmessage = "P4 to P5 Intermission -  11:30 to 11:40"
-                    var timel = "11:40:00";
+                } else if (timex >= 11.10 && timex < 11.20) {
+                    period = "Take 10. We're back at 11:20"
+                    bmessage = "P4 to P5 Intermission -  11:10 to 11:20"
+                    var timel = "11:20:00";
                     classis = false;
-                } else if (timex >= 11.40 && timex < 12.10) {
-                    bmessage = "Period 5A (Either Lunch or Study Hall) - 11:40 to 12:10"
+                } else if (timex >= 11.20 && timex < 11.50) {
+                    bmessage = "Period 5A (Either Lunch or Study Hall) - 11:20 to 11:50"
                     period = "Period 5A"
-                    var timel = "12:10:00";
+                    var timel = "11:50:00";
                     classis = false;
-                } else if (timex >= 12.10 && timex < 12.15) {
-                    period = "Take 5 Minutes off. We're back at 12:15"
-                    bmessage = "P5a to P5b Intermission -  12:10 to 12:15"
-                    var timel = "12:15:00";
+                } else if (timex >= 11.50 && timex < 11.55) {
+                    period = "Take 5 Minutes off. We're back at 11:55"
+                    bmessage = "P5a to P5b Intermission -  11:50 to 11:55"
+                    var timel = "11:55:00";
                     classis = false;
-                } else if (timex >= 12.15 && timex < 12.45) {
-                    bmessage = "Period 5B (Either Lunch or Study Hall) - 12:15 to 12:45"
+                } else if (timex >= 11.55 && timex < 12.25) {
+                    bmessage = "Period 5B (Either Lunch or Study Hall) - 11:55 to 12:25"
                     period = "Period 5B"
-                    var timel = "12:45:00";
+                    var timel = "12:25:00";
                     classis = false;
-                } else if (timex >= 12.45 && timex < 12.55) {
-                    period = "Take 10. We're back at 12:55 PM"
-                    bmessage = "P5B to P6A Intermission -  12:45 to 12:55"
-                    var timel = "12:55:00";
+                } else if (timex >= 12.25 && timex < 12.35) {
+                    period = "Take 10. We're back at 12:35 PM"
+                    bmessage = "P5B to P6A Intermission -  12:25 to 12:35"
+                    var timel = "12:35:00";
                     classis = false;
-                } else if (timex >= 12.55 && timex < 13.25) {
-                    bmessage = "Period 6A (Class) 12:55 PM to 1:25 PM"
+                } else if (timex >= 12.35 && timex < 13.05) {
+                    bmessage = "Period 6A (Class) 12:35 PM to 1:05 PM"
                     period = "Period 6A"
-                    var timel = "13:25:00";
+                    var timel = "13:05:00";
                     classis = true;
-                } else if (timex >= 13.25 && timex < 13.30) {
-                    period = "Take 5 Minutes off. We're back at 1:30 PM"
-                    bmessage = "P6A to P6B Intermission -  1:25 PM to 1:30 PM"
-                    var timel = "13:30:00";
+                } else if (timex >= 13.05 && timex < 13.10) {
+                    period = "Take 5 Minutes off. We're back at 1:10 PM"
+                    bmessage = "P6A to P6B Intermission -  1:05 PM to 1:10 PM"
+                    var timel = "13:10:00";
                     classis = false;
-                } else if (timex >= 13.30 && timex < 14.00) {
-                    bmessage = "Period 6B (Study Hall) - 1:30 PM to 2:00 PM"
+                } else if (timex >= 13.10 && timex < 13.40) {
+                    bmessage = "Period 6B (Study Hall) - 1:10 PM to 1:40 PM"
                     period = "Period 6B"
-                    var timel = "14:00:00";
+                    var timel = "13:40:00";
                     classis = true;
-                } else if (timex >= 14.00 && timex < 14.10) {
-                    period = "Take 10. We're back at 2:10 PM"
-                    bmessage = "P6A to P7 Intermission -  2:00 PM to 2:10 PM"
-                    var timel = "14:10:00";
+                } else if (timex >= 13.40 && timex < 13.50) {
+                    period = "Take 10. We're back at 1:50 PM"
+                    bmessage = "P6A to P7 Intermission -  2:40 PM to 2:50 PM"
+                    var timel = "13:50:00";
                     classis = false;
-                } else if (timex >= 14.10 && timex < 14.40) {
+                } else if (timex >= 13.50 && timex < 14.30) {
                     period = "Period 7"
-                    bmessage = "Period 7 -  2:10 PM to 2:40 PM"
+                    bmessage = "Period 7 -  1:50 PM to 2:30 PM"
+                    var timel = "14:30:00";
+                    classis = false;
+                } else if (timex >= 14.30 && timex < 14.40) {
+                    period = "Take 10. We're back at 2:40 PM"
+                    bmessage = "P7 to P8 Intermission -  2:30 PM to 2:40 PM"
                     var timel = "14:40:00";
                     classis = false;
-                } else if (timex >= 14.40 && timex < 14.50) {
-                    period = "Take 10. We're back at 2:50 PM"
-                    bmessage = "P7 to P8 Intermission -  2:40 PM to 2:50 PM"
-                    var timel = "14:50:00";
-                    classis = false;
-                } else if (timex >= 14.50 && timex < 15.20) {
+                } else if (timex >= 14.40 && timex < 15.20) {
                     period = "Period 8"
-                    bmessage = "Period 8 -  2:50 PM to 3:20 PM"
+                    bmessage = "Period 8 -  2:40 PM to 3:20 PM"
                     var timel = "15:20:00";
                     classis = false;
-                } else if (timex >= 14.45 && timex <= 24.59) {
+                } else if (timex >= 14.45 && timex <= 23.59) {
                     period = "School Day Ended"
                     var timel = "23:59:59";
                     classis = false;
@@ -154,10 +149,10 @@ function scheduleA() {
 
             
 
-        document.getElementById("demo-a").innerHTML = period;
-        document.getElementById("demo2-a").innerHTML = timex;
-        document.getElementById("demo3-a").innerHTML = dayweek;
-        document.getElementById("demo4-a").innerHTML = bmessage;
+        document.getElementById("demo-b").innerHTML = period;
+        document.getElementById("demo2-b").innerHTML = timex;
+        document.getElementById("demo3-b").innerHTML = dayweek;
+        document.getElementById("demo4-b").innerHTML = bmessage;
 
         ////////////////
         //var timel = "15:20:00";
@@ -240,10 +235,10 @@ function scheduleA() {
 
     function initializeClock(id, endtime) {
         var clock = document.getElementById(id);
-        var daysSpan = clock.querySelector('.daysA');
-        var hoursSpan = clock.querySelector('.hoursA');
-        var minutesSpan = clock.querySelector('.minutesA');
-        var secondsSpan = clock.querySelector('.secondsA');
+        var daysSpan = clock.querySelector('.daysB');
+        var hoursSpan = clock.querySelector('.hoursB');
+        var minutesSpan = clock.querySelector('.minutesB');
+        var secondsSpan = clock.querySelector('.secondsB');
 
         function updateClock() {
             var t = getTimeRemaining(endtime);
@@ -266,7 +261,7 @@ function scheduleA() {
 
     // Last number is mili seconds
     deadline = new Date(Date.parse(new Date()) + 1 * 1 * 1 * xsec * 1000);
-    initializeClock('clockdiv1', deadline);
+    initializeClock('clockdiv2', deadline);
 
     function checknull() {
         if (distance == 0) {
@@ -301,50 +296,48 @@ function scheduleA() {
 
     console.log(`seconds elapsed = ${Math.floor(millis/1000)}, playing bell`);
     playAudio();
-    scheduleA();
+    scheduleB();
     }, timeoutx);
 
-    /*
     if (accepted()) {
 
         document.cookie = "audioenabled = True";
 
     }
-    */
 
 
 
-   function exit( status ) {
+
+    function exit( status ) {
     
-    var i;
-
-    if (typeof status === 'string') {
-        console.log(status);
+        var i;
+    
+        if (typeof status === 'string') {
+            console.log(status);
+        }
+    
+        window.addEventListener('error', function (e) {e.preventDefault();e.stopPropagation();}, false);
+    
+        var handlers = [
+            'copy', 'cut', 'paste',
+            'beforeunload', 'blur', 'change', 'click', 'contextmenu', 'dblclick', 'focus', 'keydown', 'keypress', 'keyup', 'mousedown', 'mousemove', 'mouseout', 'mouseover', 'mouseup', 'resize', 'scroll',
+            'DOMNodeInserted', 'DOMNodeRemoved', 'DOMNodeRemovedFromDocument', 'DOMNodeInsertedIntoDocument', 'DOMAttrModified', 'DOMCharacterDataModified', 'DOMElementNameChanged', 'DOMAttributeNameChanged', 'DOMActivate', 'DOMFocusIn', 'DOMFocusOut', 'online', 'offline', 'textInput',
+            'abort', 'close', 'dragdrop', 'load', 'paint', 'reset', 'select', 'submit', 'unload'
+        ];
+    
+        function stopPropagation (e) {
+            e.stopPropagation();
+            // e.preventDefault(); // Stop for the form controls, etc., too?
+        }
+        for (i=0; i < handlers.length; i++) {
+            window.addEventListener(handlers[i], function (e) {stopPropagation(e);}, true);
+        }
+    
+        if (window.stop) {
+            window.stop();
+        }
+    
+        throw '';
     }
-
-    window.addEventListener('error', function (e) {e.preventDefault();e.stopPropagation();}, false);
-
-    var handlers = [
-        'copy', 'cut', 'paste',
-        'beforeunload', 'blur', 'change', 'click', 'contextmenu', 'dblclick', 'focus', 'keydown', 'keypress', 'keyup', 'mousedown', 'mousemove', 'mouseout', 'mouseover', 'mouseup', 'resize', 'scroll',
-        'DOMNodeInserted', 'DOMNodeRemoved', 'DOMNodeRemovedFromDocument', 'DOMNodeInsertedIntoDocument', 'DOMAttrModified', 'DOMCharacterDataModified', 'DOMElementNameChanged', 'DOMAttributeNameChanged', 'DOMActivate', 'DOMFocusIn', 'DOMFocusOut', 'online', 'offline', 'textInput',
-        'abort', 'close', 'dragdrop', 'load', 'paint', 'reset', 'select', 'submit', 'unload'
-    ];
-
-    function stopPropagation (e) {
-        e.stopPropagation();
-        // e.preventDefault(); // Stop for the form controls, etc., too?
-    }
-    for (i=0; i < handlers.length; i++) {
-        window.addEventListener(handlers[i], function (e) {stopPropagation(e);}, true);
-    }
-
-    if (window.stop) {
-        window.stop();
-    }
-
-    throw '';
-}
-
 
 }
