@@ -33,7 +33,7 @@ function scheduleB() {
     
             ///// Coronavirus 2020-2021 B SCHEDULE
             if (n == 2020) {
-                dayweek = "Coronavirus - First Day of School Exception Schedule (High School)"
+                dayweek = "Coronavirus - First Day of School Exception Schedule (Middle School)"
                 //var timex = new Date().getHours();
                 if (timex >= 1.00 && timex < 8.00) {
                     period = "Early Bird"
