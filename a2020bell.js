@@ -76,7 +76,7 @@ function scheduleA() {
                     classis = true;
                 } else if (timex >= 11.10 && timex < 11.20) {
                     period = "Take 10. We're back at 11:20"
-                    bmessage = "P4 to P5 Intermission -  11:10 to 11:20"
+                    bmessage = "P4 to P5a Intermission -  11:10 to 11:20"
                     var timel = "11:20:00";
                     classis = false;
                 } else if (timex >= 11.20 && timex < 11.50) {
