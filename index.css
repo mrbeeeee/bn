@@ -8,7 +8,33 @@ html, body {
 display: none;
 }
 
+#clockdiv{
+    font-family: sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
+}
 
+#clockdiv > div{
+    padding: 10px;
+    border-radius: 3px;
+    background: #00BF96;
+    display: inline-block;
+}
+
+#clockdiv div > span{
+    padding: 15px;
+    border-radius: 3px;
+    background: #00816A;
+    display: inline-block;
+}
+
+.smalltext{
+    padding-top: 5px;
+    font-size: 16px;
+}
 
 
 
@@ -161,17 +187,6 @@ a:hover {
     text-transform: uppercase;
 }
 
-.bl-icon {
-    font-family: 'icomoon';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    cursor: pointer;
-    -webkit-font-smoothing: antialiased;
-}
 
 .bl-icon:before {
     display: block;
