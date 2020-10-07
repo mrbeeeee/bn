@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+
+    <script src='a2020bell.js'></script>
+    <script src='b2020bell.js'></script>
+
+
+
+
+    <audio id="bell">
+    <source src="./img/guitarbell.mp3" type="audio/mpeg">
+    Your browser does not support the audio element. (It's a bell noise.)
+    </audio>
+
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Bell Ninja - A CMD Book Creation
+    </title>
+    <meta name="description" content="A simple answer to a constant question. When is the class bell going to ring?">
+
+    <link rel="icon" href="img/favicon.png" type="img/png">
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="img/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158778430-1">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-158778430-1');
+    </script>
+
+    
+<link rel='stylesheet' href="index.css">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="conta">
+        <div class="bl-main" id="bl-main">
+            <section onclick="scheduleA()">
+                <div class="bl-box">
+                    <h2>High School Schedule</h2>
+                </div>
+
+                <div class="bl-content">
+                    <h2>Class Schedule (HS) <p id="demo-a"></p></h2>
+
+                    <p>Here is a quick preview. Please be sure that you've selected the correct schedule. If you found a mistake in the schedule, please use the contact form to report the error. Thank you.</p>
+                    <br>
+                    WARNING! The website will play a digital "bell" noise. If you do not want this, please mute the page tab!
+                    <br>
+                    <br>
+                    <h1>Schedule Clock (Time until next bell ring)
+                    </h1>
+                    <div class="flip-box">
+                      <div class="flip-box-inner">
+                        <div class="flip-box-front">
+                          <div id="clockdiv1">
+                            <div>
+                              <span class="daysA">
+                              </span>
+                              <div class="smalltext">Days
+                              </div>
+                            </div>
+                            <div>
+                              <span class="hoursA">
+                              </span>
+                              <div class="smalltext">Hours
+                              </div>
+                            </div>
+                            <div>
+                              <span class="minutesA">
+                              </span>
+                              <div class="smalltext">Minutes
+                              </div>
+                            </div>
+                            <div>
+                              <span class="secondsA">
+                              </span>
+                              <div class="smalltext">Seconds
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <br>
+                        <br>
+
+                        <!--div class="flip-box-back">
+                          <br>
+                          <h2>
+                            <p id="demo4-a">
+                            </p>
+                          </h2
+                        </div>-->
+                        
+
+                    <div style="font-size: 0.5; opacity: 0.55;">
+
+                        <p id="demo3-a">
+                        </p>
+                        <p id="demo4-a" style='margin-top: -80px;'>
+                        </p>
+                        <p id="demo2-a" style='visibility: hidden;'>
+                        </p>
+                    </div>
+                        </div>
+                      </div>
+                    <br>
+                    <br>
+                    <br>
+                <span class="bl-icon-close" style='opacity: 0.85;'><i class="fa fa-times fa-3x" aria-hidden="true"></i></span></div>
+            </section>
+
+
+            <section onclick="scheduleB()">
+                <div class="bl-box">
+                    <h2>Middle School Schedule</h2>
+                </div>
+
+                <div class="bl-content">
+                    <h2>Class Schedule (MS) <p id="demo-b"></p></h2>
+
+                    <p>Here is a quick preview. Please be sure that you've selected the correct schedule. If you found a mistake in the schedule, please use the contact form to report the error. Thank you.</p>
+                    <br>
+                    WARNING! The website will play a digital "bell" noise. If you do not want this, please mute the page tab!
+                    <br>
+                    <br>
+                    <h1>Schedule Clock (Time until next bell ring)
+                    </h1>
+                    <div class="flip-box">
+                      <div class="flip-box-inner">
+                        <div class="flip-box-front">
+                          <div id="clockdiv2">
+                            <div>
+                              <span class="daysB">
+                              </span>
+                              <div class="smalltext">Days
+                              </div>
+                            </div>
+                            <div>
+                              <span class="hoursB">
+                              </span>
+                              <div class="smalltext">Hours
+                              </div>
+                            </div>
+                            <div>
+                              <span class="minutesB">
+                              </span>
+                              <div class="smalltext">Minutes
+                              </div>
+                            </div>
+                            <div>
+                              <span class="secondsB">
+                              </span>
+                              <div class="smalltext">Seconds
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <br>
+                        <br>
+
+                        <!--div class="flip-box-back">
+                          <br>
+                          <h2>
+                            <p id="demo4-a">
+                            </p>
+                          </h2
+                        </div>-->
+                        
+
+                    <div style="font-size: 0.5; opacity: 0.55;">
+
+                        <p id="demo3-b">
+                        </p>
+                        <p id="demo4-b" style='margin-top: -80px;'>
+                        </p>
+                        <p id="demo2-b" style='visibility: hidden;'>
+                        </p>
+                    </div>
+                        </div>
+                      </div>
+                    <br>
+                    <br>
+                    <br>
+                    <span class="bl-icon-close" style='opacity: 0.85;'><i class="fa fa-times fa-3x" aria-hidden="true"></i></span></div>
+            </section>
+
+
+            <section>
+                <div class="bl-box">
+                    <h2>About/Lunch</h2>
+                </div>
+
+                <div class="bl-content">
+                    <h2>What is this?</h2>
+
+                    <p style='font-size: 0.9;'>This is bell.ninja! Yes, "ninja" is a TLD, or a top-level domain, similar to "com". Bell Ninja is a website that allows for easier access to information regarding Riviera Prepratory Schools' schedules and special events. Most visitors load the website to check when the next bell is going to ring. The website can very accurately tell when the next bell rings. (Well, most of the time) Unfortunately, the website's reliability for getting information about school events cannot be guaranteed because information is updated on the fly by a human. <b>If you are looking for information regarding the school's COVID-19 response, be sure to go to their official website here: <a href='https://rivieraschools.com' target='_blank' style='color:#277196;'>rivieraschools.com</a> <br><br>
+                    </b><br>
+                    <br>
+                    If you seek more information about the website, feel free to contact me at support@bell.ninja 
+                    <br>
+                    Thanks!
+                    <i>This website is not owned or operated by Riviera Schools. It may be affiliated in that it is run and maintained by a student.</i>
+                    <br>
+                    <br>
+                    <h2 style='color: rgb(29, 39, 30)'>Looking for lunch?</h2>
+                    <h1>Click <u onclick="openLunch()">> > H E R E < <</u></h3></p>
+                    <br>
+                    <p style='font-size: small'>This will eventually turn to just lunch and you won't have to click "here". (It seemed like a reasonable idea to include an info block for the beginning of the shool year.)</p>
+                    <span class="bl-icon-close" style='opacity: 0.85;'><i class="fa fa-times fa-3x" aria-hidden="true"></i></span></div>
+            </section>
+
+            <section id="bl-work-section">
+                <div class="bl-box">
+                    <h2>Help :(</h2>
+                </div>
+
+                <div class="bl-content">
+                    <h2>Support and Contact</h2>
+
+                    <p>These are the most common issues that are encountered when using Bell Ninja. Please select your issue. If this cannot be resolved, feel free to use the contact form.</p>
+
+                    <ul id="bl-work-items">
+
+                        <li data-panel="panel-1">
+                            <a href="#">
+                            <div style='position: relative; margin-left: 38.5%;'><i class="fas fa-envelope fa-5x"></i></div>
+                            <br>
+                            <b style='position: relative; margin-left: 31%;'>C O N T A C T</b></a>
+                        </li>
+
+                        <li data-panel="panel-2">
+                            <a href="#">
+                            <div style='position: relative; margin-left: 38.5%;'><i class="fas fa-clock fa-5x"></i></div>
+                            <br>
+                            <b style='position: relative; margin-left: 25%;'>W R O N G <span style='visibility: hidden'>f</span> T I M E</b></a>
+                        </li>
+
+                        <li data-panel="panel-3">
+                            <a href="#">
+                                <div style='position: relative; margin-left: 40.5%;'><i class="fas fa-mobile fa-5x"></i></div>
+                                <br>
+                                <b style='position: relative; margin-left: 33.5%;'>M O B I L E</b></a>
+                        </li>
+
+                        <li data-panel="panel-4">
+                            <a href="#">
+                                <div style='position: relative; margin-left: 40.5%;'><i class="fas fa-spinner fa-5x"></i></div>
+                                <br>
+                                <b style='position: relative; margin-left: 25.5%;'>N O T <span style='visibility: hidden'>f</span> L O A D I N G</b></a>
+                        </li>
+                    </ul>
+
+
+                    <span class="bl-icon-close" style='opacity: 0.85;'><i class="fa fa-times fa-3x" aria-hidden="true"></i></span></div>
+            </section>
+
+<section style="background-color: #333; margin-left: 15px; margin-right: 15px; font-size: 85%; overflow: hidden;">
+
+
+<span style='margin-right: 15px;'>
+<h2>This website is under heavy reconstruction</h2>
+<br>
+<h1>Because of the Coronavirus, the school's schedule has been split <br>up into two.
+    <br>
+    <br>
+    <i>Please select your respective schedule (A or B)</i>
+    <br>
+    <br>
+</h1>
+<br>
+<p>Sorry for the inconvienience.</p>
+<br>
+<br>
+<p style='font-size: small'>Thanks for continuing to use Bell Ninja.
+<br></p>
+<br>
+<br>
+<p style='font-size: xx-small;'>Want to look at the older and uglier Bell Ninja? Here it is: <a href="https://bell.ninja/old-days"><u>Old version</u></a></p>
+</span>
+
+<!--
+    
+    Tried to get screenshots of images. Tablets didn't like the image so i gave up ¯\_(ツ)_/¯
+    
+    span style='margin-right: 15px; display: block; float:left'>
+    <h2>This website is under heavy reconstruction</h2>
+    <br>
+    <h1>Because of the Coronavirus, the school's schedule has been split <br>up into two.
+        <br>
+        <br>
+        <i>Please select your respective schedule (A or B)</i>
+        <br>
+        <br>
+    </h1>
+    <br>
+    <p>Sorry for the inconvienience.</p>
+    <br>
+    <br>
+    <p style='font-size: small'>Thanks for continuing to use Bell Ninja.</p>
+    <img src="./img/schedule2020.png" style='position: relative; width: 300px; height: auto; margin-left: 1300px; float:right; display:block;'></img>
+    <img src="./img/explanation.png" style='position: relative; width: 300px; height: auto; margin-left: 1300px; float:right; display:block;'></img>
+    </span-->
+
+
+<span class="bl-icon bl-icon-close" style='size: 300%;'>Close</span>
+
+
+
+
+
+
+
+
+
+            </section><!-- Panel items for the works -->
+
+            <div class="bl-panel-items" id="bl-panel-work-items">
+                <div data-panel="panel-1">
+                    <div>
+
+                        <h3>Contact</h3>
+
+                        <p>Sorry if you are having issues with the website. Technical help is always available through the following email:<br>
+                        <h1>support@bell.ninja</h1><br>
+                        Alternatively, you may also create a support ticket at <a href='https://panicstudy.com/contact' target='_blank'>Panic Study. (Clickable)</a></p>
+                        
+                    </div>
+                </div>
+
+                <div data-panel="panel-2">
+                    <div>
+
+                        <h3>The count downtimer is off</h3>
+
+                        <p>In some cases, an incorrect entry can happen when a new schedule is inputted. If the schedule is ringing 5-15 minutes off, please alert me by emailing the email below (more contact information available in the contact section)<br>
+                        <br>
+                        Bell Ninja calculates the difference between your time and the time of the next bell ring. In some rare cases, if your device time is wrong, the countdown timer will be wrong. Check if your tablet has the correct time by comparing it against an atomic clock. An excellent resource is a website called <a href='https://time.gov' target="_blank">time.gov (Clickable)</a>If your device's time is wrong, it might be a good idea to check with the administration to get your tablet sorted out. (All Riviera Schools tablets appear to have a restriction on general device settings, so fixing you're devices time cannot be done without the help of an administrator.)<br><br>
+                        Seeing "NaN aN aN aN"? You might be using an unsupported browser. The most compatible browser to use with Bell Ninja seems to be Google Chrome.<br><br>
+                        <br>
+                        <i>Have a question that is not listed here? Here's a support email. Please allow 1-2 days for a response.</i>
+                        <h3>support@bell.ninja</h3></p>
+                    </div>
+                </div>
+
+                <div data-panel="panel-3">
+                    <div>
+
+                        <h3>Mobile Device Compatability</h3>
+
+                        <p>Bell Ninja is now optimised for use with Windows tablets such as Microsoft's Surface Pro. You could use a smart phone to access the website, but be sure to maintain a level of tolerance. There may be visualization bugs and even functionality bugs.
+                            <br>
+                            <br>
+                            Safari is the least compatible browser for Bell Ninja. IOS devices using Safari, such as iPhones, iPads, and Macs tend to not work with Bell Ninja.
+                            <br>
+                            <br>
+                        </p>
+                    </div>
+                </div>
+
+                <div data-panel="panel-4">
+                    <div>
+
+                        <h3>Not Loading?</h3>
+
+                        <p>Check your wifi reception. If it is low, try getting indoors. Stay away from the field when trying to get the best wifi reception. Bell Ninja requires internet connection to refresh the time after the bell rings. <br><br>
+                        If the website still doesn't load, your browser may have some corrupt data that is preventing you from accessing certain websites. Try clearing your browsing cookies. <br><br>If you are still having trouble, feel free to contact. </p>
+                    </div>
+                </div>
+
+                <nav>
+                    <span class="bl-next-work">&gt; Next Misc.</span>
+                    <span class="bl-icon-close"><u><h2>Exit<h2></u></span>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div><!-- /container -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <script src="js/boxlayout.js"></script> 
+<script>
+            $(function() {
+                Boxlayout.init();
+            });
+</script>
+
+
+
+
+<!-- PANIC STUDY PLUG -->
+
+<!--a href='https://panicstudy.com' target='_blank'><img src='https://cmdbook.com/assets/ps-img/front-page-logo.png' class='panicstudy bottomright slide-in-br'></img></a-->
+
+<a href='https://rivieraschools.tech' target='_blank'><img src='https://cmdbook.com/assets/img/WRPC.png' class='panicstudy bottomright slide-in-br'></img></a>
+
+
+
+
+
+</body>
+
+<footer>
+
+<!-- Initialize Clocks dependent on clicking on stuff :D -->
+<!--script>
+    function scheduleA() { 
+        console.log("It works");
+    }
+
+</script>
+
+
+
+<script>
+    function scheduleB() { 
+        // do something
+    }
+</script-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
