@@ -152,7 +152,7 @@ function scheduleA() {
         document.getElementById("demo-a").innerHTML = period;
         document.getElementById("demo2-a").innerHTML = timex;
         document.getElementById("demo3-a").innerHTML = dayweek;
-        document.getElementById("demo4-a").innerHTML = bmessage;
+        //document.getElementById("demo4-a").innerHTML = bmessage;
 
         ////////////////
         //var timel = "15:20:00";
@@ -173,7 +173,7 @@ function scheduleA() {
 
         // Find the distance between now and the count down date
         distance = countDownDate - now;
-
+        document.getElementById("demo4-a").innerHTML = distance;
         // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
