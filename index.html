@@ -23,12 +23,18 @@
   <link rel='stylesheet' href="index.css">
   <script type="text/javascript"
     src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
-
+    <script>
+      window.setInterval('refresh()', 10000); 	// Call a function every 10000 milliseconds (OR 10 seconds).
+  
+      // Refresh or reload page.
+      function refresh() {
+          window .location.reload();
+      }
+  </script>
 </head>
 
 <body onload="scheduleA()">
   <div class="container">
-    <p id="demo2-a"></p>
     <div class="conta">
       <div class="bl-main bl-expand-item" id="bl-main">
         <section class="bl-expand bl-expand-top">
@@ -37,60 +43,15 @@
               <div class="flip-box-inner">
                 <div class="flip-box-front">
                   <div id="clockdiv1">
-                    <div>
-                      <span class="secondsA">
-                      </span>
-                      <div class="smalltext">Seconds
-                      </div>
-                    </div>
+                   
                     <div>
                       <div id="demo4-a">
                       </div>
                       <div class="smalltext">TIMEXXXXXXX
                       </div>
                     </div>
-                    <div>
-                      <span id="demo3-a">
-                      </span>
-                      <div class="smalltext">Minutes
-                      </div>
-                    </div>
-                    <div>
-                      <span id="demo2-a">
-                      </span>
-                      <div class="smalltext">Seconds
-                      </div>
-                    </div>
-                    <div>
-                      <span id="demo-a">
-                      </span>
-                      <div class="smalltext">PERIOD
-                      </div>
-                    </div>
-
-                    <div>
-                      <span class="secondsA">
-                      </span>
-                      <div class="smalltext">Dayspan
-                      </div>
-                    </div>
-                    <div>
-                      <span class="hoursA">
-                      </span>
-                      <div class="smalltext">Hours
-                      </div>
-                    </div>
-                    <div>
-                      <span class="minutesSpan">
-                      </span>
-                      <div class="smalltext">Minutes
-                      </div>
-                    </div>
-                    <div>
-                      <span class="secondsSpan">
-                      </span>
-                      <div class="smalltext">Seconds
-                      </div>
+                    
+                     
                     </div>
 
                   </div>
