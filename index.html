@@ -1,105 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <head>
+ 
     <script>
       setInterval(function() {
     window.location.reload();
 }, 300000);
 
-      //document.cookie = "landingPage=visited; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-      //if(!document.cookie.includes('landingPage=visited;')) {
-      //  window.location.href = "https://bell.ninja/firsttime.php";
-      //}
-
-      function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
-</script>
-<header>
-<style>
-  .containerforalerts {
-  opacity: 0.8;
-  align-items: flex-start;
-  z-index: 5;
-  transition: 0.3s;
-}
-
-.alertf {
-  opacity: 0.8;
-  width: 50%;
-  border-radius: 15px;
-  margin-left: 1380px;
-  padding: 20px;
-  background-color: #f44336;
-  color: white;
-  opacity: 1;
-  transition: opacity 0.6s;
-  margin-bottom: 15px;
-  position: -webkit-sticky;
-  position: absolute;
-  bottom: 1rem;
-  align-self: flex-end;
-  margin-top: 300px;
-  position: fixed;
-     bottom: 0px;
-     right: 0px;
-     transition: 0.3s;
-}
-
-.alertf.success {background-color: #4CAF50; opacity: 0.8;}
-.alertf.info {background-color: #2196F3; opacity: 0.8;}
-.alertf.warning {background-color: #ff9800; opacity: 0.8;}
-
-.closebtnf {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.closebtnf:hover {
-  color: black;
-}
-
-.stickit {
-
-  position: relative;
-  bottom: 1px;
-  width: 120%;
-  
-}
-
-.stickitleft {
-
-position: relative;
-bottom: -1px;
-margin-left: -600px;
-width: 25%;
-
-}
-</style>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="js\boxlayout.js"></script>
-  <!-- Initialize Clocks dependent on clicking on stuff :D -->
-  <script>
     function scheduleA() {
       console.log("It works");
     }
@@ -123,7 +30,7 @@ width: 25%;
     <div class="smalltext">3a</div>
   </div>
   <div>
-    <span class="minutesA"></span>
+    <span id="demo-a"></span>
     <div class="smalltext">Minutes</div>
   </div>
   <div>
