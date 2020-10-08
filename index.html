@@ -4,11 +4,11 @@
  
  
      <script> 
-//$(document).ready(function(){
-//setInterval(function(){
-//      $("#clockdiv1").load(window.location.href + " #clockdiv1" );
-//}, 1000);
-//});
+$(document).ready(function(){
+setInterval(function(){
+      $("#clockdiv1").load(window.location.href + " #clockdiv1" );
+}, 1000);
+});
 
 
     function scheduleA() {
@@ -26,7 +26,10 @@
   <h1>Countdown Clock</h1>
 <div id="clockdiv1">
  
-  
+  <div>
+    <span id="demo3-a"></span>
+    <div class="smalltext">Counter</div>
+  </div>
   <div>
     <span id="demo-a"></span>
     <div class="smalltext">Current Period</div>
@@ -35,7 +38,6 @@
     <span id="demo2-a"></span>
     <div class="smalltext">Timer</div>
   </div>
-  
 </div>
 </body>
 </html>
